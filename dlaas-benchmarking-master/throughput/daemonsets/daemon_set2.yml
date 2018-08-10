@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: s3-ds2
+spec:
+  template:
+    metadata:
+      annotations:
+        scheduler.alpha.kubernetes.io/tolerations: '[ { "key": "dedicated", "operator": "Equal", "value": "gpu-task" } ]'
+      labels:
+        app: s3-ds
+    spec:
+      containers:
+      - name: s3-tester
+        image: registry.ng.bluemix.net/dlaas_dev/s3_tester:mgarod
+        imagePullPolicy: Always
+        command: ["python"]
+        args: ["./s3_tester_1min.py", "https://s3-api.dal-us-geo.objectstorage.service.networklayer.com/imagenet/imagenet_train_0.5/data.mdb", "idd4n47KjaNrJ891JE6S", "TPqhRQQGaYW5Ew3qpVT4CdYJhJ1lJgpIYhJPY5Yt"]
+      imagePullSecrets:
+      - name: bluemix-cr-ng
+      restartPolicy: Always # Mandatory with daemonset, but script will inf.loop after one execution
+      tolerations:
+      - effect: NoSchedule
+        key: dedicated
+        operator: Equal
+        value: gpu-task

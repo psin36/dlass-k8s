@@ -1,0 +1,15 @@
+net: "./<TRAINVALFILE>"
+test_iter: 1000
+test_interval: 1000
+base_lr: 0.016968
+lr_policy: "step"
+gamma: 0.1
+stepsize: 100000
+display: 20
+average_loss: 100
+max_iter: <ITERATIONS>
+momentum: 0.9
+weight_decay: 6.4679349e-23
+snapshot: 100000
+snapshot_prefix: "./BVLCCaffe_vgg_train"
+solver_mode: GPU

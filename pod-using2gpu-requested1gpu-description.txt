@@ -1,0 +1,73 @@
+Name:           tfcnnbenchmark-deployment-imagenet-tfrecord-6-29-55f6676ccgmq2t
+Namespace:      interns
+Node:           10.186.26.29/10.186.26.29
+Start Time:     Fri, 29 Jun 2018 09:48:21 -0400
+Labels:         app=tfcnnbenchmark
+                pod-template-hash=1192232773
+Annotations:    kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicaSet","namespace":"interns","name":"tfcnnbenchmark-deployment-imagenet-tfrecord-6-29-55f6676cc7","ui...
+                scheduler.alpha.kubernetes.io/nvidiaGPU={ "AllocationPriority": "Dense" }
+                scheduler.alpha.kubernetes.io/tolerations=[ { "key": "dedicated", "operator": "Equal", "value": "gpu-task" } ]
+Status:         Running
+IP:             172.30.175.164
+Controlled By:  ReplicaSet/tfcnnbenchmark-deployment-imagenet-tfrecord-6-29-55f6676cc7
+Containers:
+  tfcnnbenchmark-container-imagenet-tfrecord-6-29:
+    Container ID:  docker://143dd50dfb41280b120dc78b1cd0924dd2413bb30024047465ce8252283b7025
+    Image:         prachisinha/dlaas_benchmarks_tfcnn_sample
+    Image ID:      docker-pullable://prachisinha/dlaas_benchmarks_tfcnn_sample@sha256:0dc3988f7a36e50ba112159c80724b78ae7a84311d615eaead4434d28a9c771d
+    Port:          <none>
+    Host Port:     <none>
+    Args:
+      /bin/sh
+      -c
+      python scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 64 --num_batches=2000 --num_gpus 2 --data_dir /mnt/s3fs/ --data_name imagenet  2>&1 | tee -a /mnt/s3fs/training-log-psin.txt
+    State:          Running
+      Started:      Fri, 29 Jun 2018 10:13:12 -0400
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Fri, 29 Jun 2018 09:50:11 -0400
+      Finished:     Fri, 29 Jun 2018 10:13:10 -0400
+    Ready:          True
+    Restart Count:  1
+    Limits:
+      alpha.kubernetes.io/nvidia-gpu:  1
+      cpu:                             8
+      memory:                          32G
+    Requests:
+      alpha.kubernetes.io/nvidia-gpu:  1
+      cpu:                             8
+      memory:                          32G
+    Environment:                       <none>
+    Mounts:
+      /mnt/s3fs from tfcnnbenchmark-volume-imagenet-tfrecord-6-29 (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9fpwb (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          True 
+  PodScheduled   True 
+Volumes:
+  tfcnnbenchmark-volume-imagenet-tfrecord-6-29:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  tfcnnbenchmark-pvc-imagenet-tfrecord-6-29
+    ReadOnly:   false
+  default-token-9fpwb:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9fpwb
+    Optional:    false
+QoS Class:       Guaranteed
+Node-Selectors:  <none>
+Tolerations:     dedicated=gpu-task
+                 node.alpha.kubernetes.io/notReady:NoExecute for 300s
+                 node.alpha.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age                From                   Message
+  ----    ------                 ----               ----                   -------
+  Normal  Scheduled              44m                default-scheduler      Successfully assigned tfcnnbenchmark-deployment-imagenet-tfrecord-6-29-55f6676ccgmq2t to 10.186.26.29
+  Normal  SuccessfulMountVolume  44m                kubelet, 10.186.26.29  MountVolume.SetUp succeeded for volume "default-token-9fpwb"
+  Normal  SuccessfulMountVolume  44m                kubelet, 10.186.26.29  MountVolume.SetUp succeeded for volume "pvc-899e7204-7ba2-11e8-ad7d-eeeac76c6d07"
+  Normal  Pulling                19m (x2 over 44m)  kubelet, 10.186.26.29  pulling image "prachisinha/dlaas_benchmarks_tfcnn_sample"
+  Normal  Pulled                 19m (x2 over 42m)  kubelet, 10.186.26.29  Successfully pulled image "prachisinha/dlaas_benchmarks_tfcnn_sample"
+  Normal  Created                19m (x2 over 42m)  kubelet, 10.186.26.29  Created container
+  Normal  Started                19m (x2 over 42m)  kubelet, 10.186.26.29  Started container

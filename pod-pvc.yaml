@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: s3fs-test-pod
+spec:
+  containers:
+  - name: s3fs-test-container
+    image: registry.ng.bluemix.net/wdcloud/utility-image:master-191
+    volumeMounts:
+    - mountPath: "/mnt/s3fs"
+      name: s3fs-test-volume
+  imagePullSecrets:
+  - name: us-south-wdcloud-eric-token
+  volumes:
+  - name: s3fs-test-volume
+    persistentVolumeClaim:
+      claimName: s3fs-test-pvc

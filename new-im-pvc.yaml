@@ -1,0 +1,19 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: new-im-psin-pvc
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "ibmc-s3fs-standard"
+    ibm.io/auto-create-bucket: "false"
+    ibm.io/auto-delete-bucket: "false"
+    ibm.io/bucket: "mount-pvc-psin-6-20"
+    ibm.io/object-path: ""    # Bucket's sub-directory to be mounted (OPTIONAL)
+    ibm.io/endpoint: "https://s3.us-south.objectstorage.service.networklayer.com"
+    ibm.io/region: "us-south"
+    ibm.io/secret-name: "new-im-psin-secret"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi # fictitious value

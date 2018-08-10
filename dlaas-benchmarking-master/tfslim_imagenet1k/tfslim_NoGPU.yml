@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: s3fs-test-pod-nogpu
+spec:
+  containers:
+  - name: s3fs-test-pod-nogpu
+    image: tensorflow/tensorflow:1.5.0
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/sh"]
+    args: ["-c", "curl -O https://codeload.github.com/tensorflow/models/zip/v1.4.0 && unzip v1.4.0 && rm v1.4.0 && python ./models-1.4.0/official/resnet/imagenet_main.py --data_dir=/mnt/data/imagenet-tfrecord --num_epochs=50 --num_parallel_calls=8"]
+    resources:
+      requests:
+        cpu: "8.0"
+        memory: 24Gi
+      limits:
+        cpu: "8"
+        memory: 24Gi
+    volumeMounts:
+    - mountPath: "/mnt/data/imagenet-tfrecord"
+      name: imagenet-tfrecord-volume
+    - mountPath: "/mnt/results/imagenet-tfrecord-results"
+      name: imagenet-tfrecord-results-volume
+  volumes:
+  - name: imagenet-tfrecord-volume
+    flexVolume:
+      driver: "ibm/ibmc-s3fs"
+      secretRef:
+        name: s3fs-imagenet-tfrecord
+      options:
+        bucket: "imagenet-tfrecord"
+        endpoint: "https://s3-api.dal-us-geo.objectstorage.softlayer.net"
+        region: "us-standard"
+        cache-size-gb: "96"
+        chunk-size-mb: "52"
+        parallel-count: "5"
+        ensure-disk-free: "10000"
+        kernel-cache: "true"
+        tls-cipher-suite: "AES256-GCM-SHA384"
+        multireq-max: "20"
+        stat-cache-size: "100000"
+        debug-level: "warn"
+        curl-debug: "false"
+  - name: imagenet-tfrecord-results-volume
+    flexVolume:
+      driver: "ibm/ibmc-s3fs"
+      secretRef:
+        name: s3fs-imagenet-tfrecord
+      options:
+        bucket: "imagenet-tfrecord-results"
+        endpoint: "https://s3-api.dal-us-geo.objectstorage.softlayer.net"
+        region: "us-standard"
+        cache-size-gb: "0"
+        chunk-size-mb: "52"
+        parallel-count: "2"
+        ensure-disk-free: "2048"
+        kernel-cache: "false"
+        tls-cipher-suite: "AES256-GCM-SHA384"
+        multireq-max: "20"
+        stat-cache-size: "100000"
+        debug-level: "warn"
+        curl-debug: "false"

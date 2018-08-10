@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: s3fs-test-pod-imagenet-tfrecord
+#  namespace: dlaas
+  annotations:  
+    scheduler.alpha.kubernetes.io/tolerations: '[ { "key": "dedicated", "operator": "Equal", "value": "gpu-task" } ]'
+spec:
+  containers:
+  - name: tensorflow-benchmark
+    image: registry.ng.bluemix.net/dlaas_dev/dlaas-benchmarking:latest
+    imagePullPolicy: Always
+    command: ["python"]
+    args: ["/opt/benchmarks/scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py", "--data_dir", "/mnt/data/imagenet-tfrecord", "--model=resnet50", "--num_gpus=1", "--num_intra_threads=4", "--num_inter_threads=8", "--batch_size=64", "--num_batches=1000000", "--print_training_accuracy=true"]
+    resources:
+      requests:
+        cpu: "8.0"
+        alpha.kubernetes.io/nvidia-gpu: 1
+        memory: 24Gi
+      limits:
+        cpu: "8"
+        alpha.kubernetes.io/nvidia-gpu: 1
+        memory: 24Gi
+    volumeMounts:
+    - mountPath: "/mnt/data/imagenet-tfrecord"
+      name: imagenet-tfrecord-volume
+    - mountPath: "/mnt/results/imagenet-tfrecord-results"
+      name: imagenet-tfrecord-results-volume
+  imagePullSecrets:
+  - name: bluemix-cr-ng
+  tolerations:
+  - effect: NoSchedule
+    key: dedicated
+    operator: Equal
+    value: gpu-task
+  volumes:
+  - name: imagenet-tfrecord-volume
+    flexVolume:
+      driver: "ibm/ibmc-s3fs"
+      secretRef:
+        name: s3fs-imagenet-tfrecord
+      options:
+        bucket: "imagenet-tfrecord"
+        endpoint: "https://s3-api.dal-us-geo.objectstorage.softlayer.net"
+        region: "us-standard"
+        cache-size-gb: "96"
+        chunk-size-mb: "52"
+        parallel-count: "5"
+        ensure-disk-free: "10000"
+        kernel-cache: "true"
+        tls-cipher-suite: "AES256-GCM-SHA384"
+        multireq-max: "20"
+        stat-cache-size: "100000"
+        debug-level: "warn"
+        curl-debug: "false"
+  - name: imagenet-tfrecord-results-volume
+    flexVolume:
+      driver: "ibm/ibmc-s3fs"
+      secretRef:
+        name: s3fs-imagenet-tfrecord
+      options:
+        bucket: "imagenet-tfrecord-results"
+        endpoint: "https://s3-api.dal-us-geo.objectstorage.softlayer.net"
+        region: "us-standard"
+        cache-size-gb: "0"
+        chunk-size-mb: "52"
+        parallel-count: "2"
+        ensure-disk-free: "2048"
+        kernel-cache: "false"
+        tls-cipher-suite: "AES256-GCM-SHA384"
+        multireq-max: "20"
+        stat-cache-size: "100000"
+        debug-level: "warn"
+        curl-debug: "false"

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: new-im-psin-pod
+spec:
+  containers:
+  - name: new-im-psin-container
+    image: prachisinha/testing-image-psin-6-21
+    volumeMounts:
+    - mountPath: "/mnt/new-im-psin"
+      name: new-im-psin-volume
+  volumes:
+  - name: new-im-psin-volume
+    persistentVolumeClaim:
+      claimName: new-im-psin-pvc

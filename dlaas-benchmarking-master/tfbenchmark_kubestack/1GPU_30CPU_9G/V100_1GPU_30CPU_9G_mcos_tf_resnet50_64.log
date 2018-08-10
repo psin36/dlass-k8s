@@ -1,0 +1,14 @@
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  64 global
+             64 per device
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model

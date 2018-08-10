@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tfcnnbenchmark-deployment-imagenet-tfrecord-6-29
+  labels:
+    app: tfcnnbenchmark
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tfcnnbenchmark
+  template:
+    metadata:
+      annotations:  
+        scheduler.alpha.kubernetes.io/tolerations: '[ { "key": "dedicated", "operator": "Equal", "value": "gpu-task" } ]'
+        scheduler.alpha.kubernetes.io/nvidiaGPU: '{ "AllocationPriority": "Dense" }'
+      labels:
+        app: tfcnnbenchmark
+    spec:
+      volumes:
+      - name: tfcnnbenchmark-volume-imagenet-tfrecord-6-29
+        persistentVolumeClaim:
+          claimName: tfcnnbenchmark-pvc-imagenet-tfrecord-6-29
+      tolerations: 
+      - key: "dedicated"
+        operator: "Equal"
+        value: "gpu-task"
+      containers:
+      - name: tfcnnbenchmark-container-imagenet-tfrecord-6-29
+        image: prachisinha/dlaas_benchmarks_tfcnn_sample
+        resources:
+          limits:
+            alpha.kubernetes.io/nvidia-gpu: "1"
+            cpu: "8"
+            memory: "32G"
+          requests:
+            alpha.kubernetes.io/nvidia-gpu: "1"
+            cpu: "8"
+            memory: "32G"
+        workingDir: "/root/data/benchmarks/"
+        args: [/bin/sh, -c, "python scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 64 --num_batches=2000 --num_gpus 2 --data_dir /mnt/s3fs/ --data_name imagenet  2>&1 | tee -a /mnt/s3fs/training-log-psin.txt"]
+        #when using synthetic data
+        #args: [/bin/sh, -c, "rm -rf training-log.txt ; python scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 64 --num_batches=2000 --num_gpus 2 --data_name imagenet  2>&1 | tee tfcnnbenchmarks-imagenet-tfrecord-training-log.txt"]
+        volumeMounts:
+        - name: tfcnnbenchmark-volume-imagenet-tfrecord-6-29
+          mountPath: "/mnt/s3fs"

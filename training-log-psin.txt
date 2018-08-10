@@ -1,0 +1,482 @@
+WARNING:tensorflow:From /root/data/benchmarks/scripts/tf_cnn_benchmarks/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:From /root/data/benchmarks/scripts/tf_cnn_benchmarks/benchmark_cnn.py:1120: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+2018-06-28 21:27:43.976661: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-06-28 21:27:44.157171: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:83:00.0
+totalMemory: 11.17GiB freeMemory: 11.10GiB
+2018-06-28 21:27:44.157226: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0
+2018-06-28 21:27:44.545809: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-06-28 21:27:44.545876: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 
+2018-06-28 21:27:44.545892: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N 
+2018-06-28 21:27:44.546306: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10757 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0, compute capability: 3.7)
+2018-06-28 21:31:25.170402: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.33GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 21:31:25.197580: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 21:31:25.251416: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.54GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 21:31:25.365821: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.27GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 21:31:25.390979: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.54GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 21:31:25.547341: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.33GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 21:31:25.599133: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.26GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 21:31:25.624779: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+TensorFlow:  1.10
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             64.0 per device
+Devices:     ['/gpu:0', '/gpu:1']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+Running warm up
+Done warm up
+Step	Img/sec	loss
+1	images/sec: 55.6 +/- 0.0 (jitter = 0.0)	9.692
+10	images/sec: 55.5 +/- 0.0 (jitter = 0.1)	8.613
+20	images/sec: 55.5 +/- 0.0 (jitter = 0.1)	8.438
+30	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	8.246
+40	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.951
+50	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	8.172
+60	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	8.003
+70	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.841
+80	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.935
+90	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.927
+100	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	8.090
+110	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.938
+120	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.839
+130	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.942
+140	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.849
+150	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.851
+160	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.861
+170	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.827
+180	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.820
+190	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.997
+200	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.800
+210	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.872
+220	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.949
+230	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.865
+240	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.829
+250	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.824
+260	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.860
+270	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.855
+280	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.795
+290	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.797
+300	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.763
+310	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.799
+320	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.799
+330	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.775
+340	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.745
+350	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.824
+360	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.770
+370	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.756
+380	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.741
+390	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.723
+400	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.741
+410	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.738
+420	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.765
+430	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.764
+440	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.759
+450	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.770
+460	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.727
+470	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.665
+480	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.752
+490	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.767
+500	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.811
+510	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.734
+520	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.685
+530	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.768
+540	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.652
+550	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.736
+560	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.664
+570	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.764
+580	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.696
+590	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.727
+600	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.690
+610	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.717
+620	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.759
+630	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.766
+640	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.717
+650	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.768
+660	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.675
+670	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.710
+680	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.677
+690	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.675
+700	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.689
+710	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.577
+720	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.736
+730	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.670
+740	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.682
+750	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.714
+760	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.674
+770	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.655
+780	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.801
+790	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.625
+800	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.694
+810	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.664
+820	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.654
+830	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.634
+840	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.675
+850	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.628
+860	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.611
+870	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.835
+880	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.596
+890	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.651
+900	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.685
+910	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.663
+920	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.634
+930	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.496
+940	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.598
+950	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.569
+960	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.601
+970	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.553
+980	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.604
+990	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.572
+1000	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.710
+1010	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.625
+1020	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.598
+1030	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.645
+1040	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.579
+1050	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.526
+1060	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.598
+1070	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.620
+1080	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.575
+1090	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.622
+1100	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.585
+1110	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.476
+1120	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.489
+1130	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.638
+1140	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.492
+1150	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.530
+1160	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.526
+1170	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.379
+1180	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.571
+1190	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.595
+1200	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.532
+1210	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.562
+1220	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.465
+1230	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.468
+1240	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.576
+1250	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.572
+1260	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.535
+1270	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.606
+1280	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.489
+1290	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.577
+1300	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.578
+1310	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.538
+1320	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.556
+1330	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.578
+1340	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.539
+1350	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.519
+1360	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.478
+1370	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.572
+1380	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.535
+1390	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.392
+1400	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.536
+1410	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.440
+1420	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.697
+1430	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.554
+1440	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.417
+1450	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.502
+1460	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.461
+1470	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.316
+1480	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.452
+1490	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.517
+1500	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.272
+1510	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.382
+1520	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.326
+1530	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.441
+1540	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.529
+1550	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.475
+1560	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.390
+1570	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.456
+1580	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.363
+1590	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.310
+1600	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.429
+1610	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.428
+1620	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.433
+1630	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.396
+1640	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.395
+1650	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.502
+1660	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.271
+1670	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.245
+1680	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.463
+1690	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.290
+1700	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.394
+1710	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.229
+1720	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.318
+1730	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.293
+1740	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.143
+1750	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.209
+1760	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.510
+1770	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.424
+1780	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.463
+1790	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.387
+1800	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.281
+1810	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.397
+1820	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.377
+1830	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.413
+1840	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.467
+1850	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.384
+1860	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.482
+1870	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.433
+1880	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.351
+1890	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.247
+1900	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.405
+1910	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.254
+1920	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.281
+1930	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.299
+1940	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.343
+1950	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.217
+1960	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.334
+1970	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.285
+1980	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.385
+1990	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.278
+2000	images/sec: 55.4 +/- 0.0 (jitter = 0.1)	7.286
+----------------------------------------------------------------
+total images/sec: 55.40
+----------------------------------------------------------------
+WARNING:tensorflow:From /root/data/benchmarks/scripts/tf_cnn_benchmarks/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:From /root/data/benchmarks/scripts/tf_cnn_benchmarks/benchmark_cnn.py:1120: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+2018-06-29 13:50:30.957884: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-06-29 13:50:31.141978: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:82:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-06-29 13:50:31.142031: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0
+2018-06-29 13:50:31.528917: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-06-29 13:50:31.528987: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 
+2018-06-29 13:50:31.529003: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N 
+2018-06-29 13:50:31.529484: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15119 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+TensorFlow:  1.10
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             64.0 per device
+Devices:     ['/gpu:0', '/gpu:1']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+Running warm up
+Done warm up
+Step	Img/sec	loss
+1	images/sec: 224.9 +/- 0.0 (jitter = 0.0)	8.365
+10	images/sec: 225.9 +/- 0.4 (jitter = 0.9)	8.478
+20	images/sec: 225.7 +/- 0.4 (jitter = 1.6)	8.458
+30	images/sec: 225.6 +/- 0.3 (jitter = 1.7)	8.147
+40	images/sec: 225.3 +/- 0.3 (jitter = 1.6)	8.098
+50	images/sec: 225.2 +/- 0.3 (jitter = 1.8)	8.036
+60	images/sec: 225.1 +/- 0.2 (jitter = 1.8)	8.038
+70	images/sec: 225.1 +/- 0.2 (jitter = 1.6)	7.874
+80	images/sec: 225.1 +/- 0.2 (jitter = 1.6)	7.898
+90	images/sec: 225.1 +/- 0.2 (jitter = 1.6)	7.918
+100	images/sec: 225.1 +/- 0.2 (jitter = 1.7)	8.025
+110	images/sec: 225.1 +/- 0.2 (jitter = 1.6)	7.968
+120	images/sec: 225.0 +/- 0.2 (jitter = 1.8)	7.799
+130	images/sec: 225.0 +/- 0.2 (jitter = 1.9)	7.886
+140	images/sec: 225.1 +/- 0.2 (jitter = 1.8)	7.889
+150	images/sec: 225.1 +/- 0.2 (jitter = 1.7)	7.793
+160	images/sec: 225.1 +/- 0.1 (jitter = 1.7)	7.883
+170	images/sec: 225.1 +/- 0.1 (jitter = 1.6)	8.019
+180	images/sec: 225.2 +/- 0.1 (jitter = 1.6)	7.810
+190	images/sec: 225.2 +/- 0.1 (jitter = 1.6)	7.851
+200	images/sec: 225.3 +/- 0.1 (jitter = 1.6)	7.784
+210	images/sec: 225.3 +/- 0.1 (jitter = 1.5)	7.824
+220	images/sec: 225.4 +/- 0.1 (jitter = 1.5)	7.842
+230	images/sec: 225.4 +/- 0.1 (jitter = 1.5)	7.849
+240	images/sec: 225.5 +/- 0.1 (jitter = 1.4)	7.811
+250	images/sec: 225.5 +/- 0.1 (jitter = 1.3)	7.737
+260	images/sec: 225.5 +/- 0.1 (jitter = 1.3)	7.816
+270	images/sec: 225.6 +/- 0.1 (jitter = 1.2)	7.828
+280	images/sec: 225.6 +/- 0.1 (jitter = 1.2)	7.829
+290	images/sec: 225.6 +/- 0.1 (jitter = 1.2)	7.767
+300	images/sec: 225.6 +/- 0.1 (jitter = 1.1)	7.756
+310	images/sec: 225.7 +/- 0.1 (jitter = 1.1)	7.777
+320	images/sec: 225.7 +/- 0.1 (jitter = 1.1)	7.832
+330	images/sec: 225.7 +/- 0.1 (jitter = 1.1)	7.784
+340	images/sec: 225.7 +/- 0.1 (jitter = 1.0)	7.762
+350	images/sec: 225.8 +/- 0.1 (jitter = 1.0)	7.789
+360	images/sec: 225.8 +/- 0.1 (jitter = 1.0)	7.933
+370	images/sec: 225.8 +/- 0.1 (jitter = 0.9)	7.725
+380	images/sec: 225.8 +/- 0.1 (jitter = 0.9)	7.731
+390	images/sec: 225.9 +/- 0.1 (jitter = 0.9)	7.741
+400	images/sec: 225.9 +/- 0.1 (jitter = 0.9)	7.775
+410	images/sec: 225.9 +/- 0.1 (jitter = 0.9)	7.757
+420	images/sec: 225.9 +/- 0.1 (jitter = 0.9)	7.712
+430	images/sec: 225.9 +/- 0.1 (jitter = 0.8)	7.732
+440	images/sec: 225.9 +/- 0.1 (jitter = 0.8)	7.838
+450	images/sec: 226.0 +/- 0.1 (jitter = 0.8)	7.788
+460	images/sec: 226.0 +/- 0.1 (jitter = 0.8)	7.748
+470	images/sec: 226.0 +/- 0.1 (jitter = 0.8)	7.684
+480	images/sec: 226.0 +/- 0.1 (jitter = 0.8)	7.758
+490	images/sec: 226.0 +/- 0.1 (jitter = 0.8)	7.845
+500	images/sec: 226.0 +/- 0.1 (jitter = 0.7)	8.113
+510	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.711
+520	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.758
+530	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.823
+540	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.643
+550	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.814
+560	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.718
+570	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.763
+580	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.711
+590	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.692
+600	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.607
+610	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.696
+620	images/sec: 226.1 +/- 0.1 (jitter = 0.7)	7.719
+630	images/sec: 226.2 +/- 0.1 (jitter = 0.7)	7.616
+640	images/sec: 226.2 +/- 0.1 (jitter = 0.7)	7.711
+650	images/sec: 226.2 +/- 0.1 (jitter = 0.7)	7.751
+660	images/sec: 226.2 +/- 0.0 (jitter = 0.7)	7.692
+670	images/sec: 226.2 +/- 0.0 (jitter = 0.7)	7.729
+680	images/sec: 226.2 +/- 0.0 (jitter = 0.7)	7.623
+690	images/sec: 226.2 +/- 0.0 (jitter = 0.7)	7.660
+700	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.641
+710	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.603
+720	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.760
+730	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.656
+740	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.670
+750	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.726
+760	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.620
+770	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.553
+780	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.711
+790	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.695
+800	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.590
+810	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.655
+820	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.653
+830	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.702
+840	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.557
+850	images/sec: 226.2 +/- 0.0 (jitter = 0.6)	7.536
+860	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.581
+870	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.690
+880	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.602
+890	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.623
+900	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.640
+910	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.703
+920	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.605
+930	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.590
+940	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.533
+950	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.662
+960	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.628
+970	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.495
+980	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.543
+990	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.603
+1000	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.627
+1010	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.627
+1020	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.512
+1030	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.627
+1040	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.578
+1050	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.579
+1060	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.527
+1070	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.593
+1080	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.633
+1090	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.642
+1100	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.659
+1110	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.507
+1120	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.569
+1130	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.578
+1140	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.535
+1150	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.509
+1160	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.452
+1170	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.364
+1180	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.548
+1190	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.513
+1200	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.389
+1210	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.542
+1220	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.446
+1230	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.442
+1240	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.486
+1250	images/sec: 226.3 +/- 0.0 (jitter = 0.6)	7.638
+1260	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.532
+1270	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.577
+1280	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.395
+1290	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.452
+1300	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.469
+1310	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.595
+1320	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.451
+1330	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.542
+1340	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.408
+1350	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.403
+1360	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.397
+1370	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.410
+1380	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.469
+1390	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.394
+1400	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.539
+1410	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.460
+1420	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.526
+1430	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.527
+1440	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.450
+1450	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.416
+1460	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.354
+1470	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.454
+1480	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.452
+1490	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.352
+1500	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.295
+1510	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.451
+1520	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.377
+1530	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.414
+1540	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.472
+1550	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.482
+1560	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.440
+1570	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.472
+1580	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.388
+1590	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.313
+1600	images/sec: 226.4 +/- 0.0 (jitter = 0.6)	7.478
+1610	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.331
+1620	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.468
+1630	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.321
+1640	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.385
+1650	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.525
+1660	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.303
+1670	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.243
+1680	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.348
+1690	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.287
+1700	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.332
+1710	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.254
+1720	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.297
+1730	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.270
+1740	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.167
+1750	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.276
+1760	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.477
+1770	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.404
+1780	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.383
+1790	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.341
+1800	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.326
+1810	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.297
+1820	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.436
+1830	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.423
+1840	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.254
+1850	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.327
+1860	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.340
+1870	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.358
+1880	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.299
+1890	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.180
+1900	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.179
+1910	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.227
+1920	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.160
+1930	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.339
+1940	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.203
+1950	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.209
+1960	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.269
+1970	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.317
+1980	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.317
+1990	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.159
+2000	images/sec: 226.4 +/- 0.0 (jitter = 0.5)	7.184
+----------------------------------------------------------------
+total images/sec: 226.40
+----------------------------------------------------------------

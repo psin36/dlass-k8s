@@ -1,0 +1,28 @@
+name: s3fs-benchmark-test
+description: Resnet50 on ImageNet 1k
+version: "1.0"
+gpus: 1
+cpus: 16
+memory: 20GiB
+#gpus: 2
+#cpus: 24
+#memory: 40GiB
+
+data_stores:
+  - id: testinstance
+    type: mount_cos
+    training_data:
+      container: imagenet-tfrecord
+    training_results:
+      container: imagenet-tfrecord-results
+    connection:
+      auth_url: https://s3-api.dal-us-geo.objectstorage.service.networklayer.com
+      user_name: idd4n47KjaNrJ891JE6S
+      password: TPqhRQQGaYW5Ew3qpVT4CdYJhJ1lJgpIYhJPY5Yt
+
+framework:
+  name: tensorflow
+  version: "1.5-py2"
+  command: >
+    python tf_cnn_benchmarks.py --data_dir $DATA_DIR --model=resnet50  --num_gpus=1 --num_intra_threads=4 --num_inter_threads=8 --batch_size=64 --num_batches=10000 --print_training_accuracy=true
+#    cp -R $DATA_DIR . && python tf_cnn_benchmarks.py --data_dir imagenet-tfrecord --model=resnet50  --num_gpus=1 --num_intra_threads=0 --batch_size=64 --num_batches=10000 --batch_group_size=8 --print_training_accuracy=true

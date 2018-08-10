@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utility-image-gpu
+  labels:
+    name: utility-image-gpu
+  # Uncomment the following lines in order to claim a gpu node for CUDA usage (kube <1.7.4)
+  annotations:
+    scheduler.alpha.kubernetes.io/tolerations: |
+      [
+        {
+          "key": "dedicated",
+          "operator": "Equal",
+          "value": "gpu-task"
+        }
+      ]
+spec:
+  # Uncomment the following lines in order to claim a gpu node for CUDA usage (kube >1.7.4)
+  # tolerations:
+  #   - key: dedicated
+  #     operator: Equal
+  #     value: gpu-task
+  #     effect: NoSchedule  
+  imagePullSecrets:
+        - name: us-south-wdcloud-token
+  containers:
+  - name: utility-image
+    image: 'registry.ng.bluemix.net/wdcloud/utility-image-gpu:1513275379'
+    resources:
+      limits:
+        alpha.kubernetes.io/nvidia-gpu: 1

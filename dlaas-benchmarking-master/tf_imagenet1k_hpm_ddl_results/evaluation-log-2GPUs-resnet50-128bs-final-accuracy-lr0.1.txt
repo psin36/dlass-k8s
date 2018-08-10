@@ -1,0 +1,131 @@
+root@dlaas-test:~/dlaas-benchmarking# ~/get-log.sh learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253-0
+/usr/local/bin/train.sh: line 12: /usr/local/bin/utility.sh: No such file or directory
+executing installPrerequisites sh
+ * Starting OpenBSD Secure Shell server sshd
+   ...done.
+Training with training/test data at:
+  DATA_DIR: /mnt/data/imagenet-tfrecord
+  MODEL_DIR: /job/model-code
+  RESULT_DIR: /mnt/results/imagenet-ddl-results/training-LborR4RiR
+  LOG_DIR: /job/logs
+  TRAINING_JOB: 
+  TRAINING_COMMAND: python tf_cnn_benchmarks.py  --data_dir ${DATA_DIR}/ --model=resnet50  --num_gpus=1 --batch_size=128 --num_batches=400 --learning_rate=0.1 --num_epochs_per_decay=30 --learning_rate_decay_factor=0.1 --display_every=10  --num_intra_threads=0 --print_training_accuracy=True --summary_verbosity=1 --save_summaries_steps=4000 --save_model_secs=600  --train_dir=/mnt/results/imagenet-ddl-results/training-qaV0Yh6zg --eval=true 
+  GPUs per Learner: 1.000000
+  LEARNER_ID: 1
+  LEARNER_NAME_PREFIX:: learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253
+Num learners: 1
+creating results directory /mnt/results/imagenet-ddl-results/training-LborR4RiR/learner-1
+cat: /job/model-code/: Is a directory
+Training job: 
+Argument for invocation: 
+Making sure ssh is running
+ * sshd is running
+ * Starting OpenBSD Secure Shell server sshd
+   ...done.
+ * sshd is running
+set the LD_PRELOAD path to /usr/local/cuOpenMPI3.0.0/lib/libmpi.so
+Thu Mar  8 16:56:21 UTC 2018: Running Tensorflow with DDL
+Num learners: 1
+Num MPI tasks: 1
+ssh: Could not resolve hostname learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253-0.learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253: Name or service not known
+Failure! Retrying in 10..
+ssh: Could not resolve hostname learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253-0.learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253: Name or service not known
+Failure! Retrying in 20..
+ssh: Could not resolve hostname learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253-0.learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253: Name or service not known
+Failure! Retrying in 40..
+ssh: Could not resolve hostname learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253-0.learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253: Name or service not known
+Failure! Retrying in 80..
+ssh: Could not resolve hostname learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253-0.learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253: Name or service not known
+Failure! Retrying in 160..
+
+You've failed me for the last time! (ssh -o ConnectTimeout=10 learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253-0 exit)
+[learner-0913e9fc-06ca-4ec2-67a5-3ee29a579253-0:01295] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB/../../../..][../../../../../../../../../../../..]
+2018-03-08 17:01:47.729424: I ddl_MDR_ops.cc:103] [MPI:0   ] Init _rank=0 _size=1 date=Mar  5 2018 time=22:48:29
+DDL: rank: 0, size: 1, gpuid: 0, hosts: 1
+2018-03-08 17:01:47.734076: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-03-08 17:01:48.053432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:81:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-03-08 17:01:48.053470: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+2018-03-08 17:01:48.363430: I ddl_MDR_ops.cc:190] [MPI:0   ]  name=Init local_gpuid=0 local_rank=0 local_size=1
+I 17:01:48.363  1301 1386 DDL:747 ] [MPI:0   ] ==== IBM Corp. DDL Mar  5 2018 22:45:39 + (MPI 3.1, CUDA 9000, NCCL 1.3.x) ====
+W 17:01:48.363 1301  1386 DDL:874 ] [MPI:0   ] USE_OPENMP is off
+DDL: module 0 initialized.
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        evaluation
+SingleSess:  False
+Batch size:  128 global
+             128.0 per device
+Num batches: 400
+Num epochs:  1.02
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+W0308 17:01:52.105448 47133531705792 tf_logging.py:118] From /job/model-code/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+DDL: rank: 0, size: 1, gpuid: 0, hosts: 1
+2018-03-08 17:01:53.377020: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+I0308 17:01:53.832697 47133531705792 tf_logging.py:110] Restoring parameters from /mnt/results/imagenet-ddl-results/training-qaV0Yh6zg/model.ckpt-1000010
+Successfully loaded model from /mnt/results/imagenet-ddl-results/training-qaV0Yh6zg/model.ckpt-1000010.
+2018-03-08 17:03:08.004455: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 1 of 10000
+2018-03-08 17:03:11.650975: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 1359 of 10000
+2018-03-08 17:03:21.004538: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 5269 of 10000
+2018-03-08 17:03:31.004492: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 8824 of 10000
+2018-03-08 17:03:34.013005: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+10	239.6 examples/sec
+20	637.3 examples/sec
+30	410.9 examples/sec
+40	342.7 examples/sec
+50	325.7 examples/sec
+60	226.5 examples/sec
+70	384.3 examples/sec
+80	396.3 examples/sec
+90	331.1 examples/sec
+100	549.5 examples/sec
+110	334.9 examples/sec
+120	294.2 examples/sec
+130	490.1 examples/sec
+140	402.6 examples/sec
+150	322.6 examples/sec
+160	309.7 examples/sec
+170	705.1 examples/sec
+180	413.2 examples/sec
+190	208.0 examples/sec
+200	412.7 examples/sec
+210	293.4 examples/sec
+220	422.3 examples/sec
+230	228.2 examples/sec
+240	701.5 examples/sec
+250	291.3 examples/sec
+260	466.5 examples/sec
+270	213.7 examples/sec
+280	427.0 examples/sec
+290	701.3 examples/sec
+300	697.9 examples/sec
+310	705.3 examples/sec
+320	705.7 examples/sec
+330	706.7 examples/sec
+340	703.1 examples/sec
+350	706.1 examples/sec
+360	704.7 examples/sec
+370	702.8 examples/sec
+380	700.3 examples/sec
+2018-03-08 17:05:49.004606: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 779 of 10000
+2018-03-08 17:05:59.004398: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 4684 of 10000
+2018-03-08 17:06:09.004408: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 8593 of 10000
+2018-03-08 17:06:12.039124: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+390	35.4 examples/sec
+400	419.2 examples/sec
+Accuracy @ 1 = 0.7318 Accuracy @ 5 = 0.9107 [51200 examples]
+----------------------------------------------------------------
+total images/sec: 317.68
+----------------------------------------------------------------
+2018-03-08 17:06:17.352732: I ddl_MDR_ops.cc:117] [MPI:0   ] calling MPI_Finalize

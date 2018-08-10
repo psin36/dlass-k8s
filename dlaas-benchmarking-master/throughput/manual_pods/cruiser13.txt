@@ -1,0 +1,103 @@
+These tests were run using a docker image built from https://github.ibm.com/ORO/s3_tester/, on cruiser13, which does not use Vyatta.
+
+The file used is a very large single file.  The command that was executed in the image, in a loop was:
+`python s3_tester.py https://s3-api.dal-us-geo.objectstorage.service.networklayer.com/imagenet/imagenet_train_0.5/data.mdb idd4n47KjaNrJ891JE6S TPqhRQQGaYW5Ew3qpVT4CdYJhJ1lJgpIYhJPY5Yt`
+
+This was executed on each individual machine, to look for differences between machines (there should not be any).  
+
+It was also executed on all machines in parallel, to determine if throughput drops (it should not, up to the limits of the endpoint).
+
+Results taken Jan 18th:
+
+Single Runs
+When s3_tester.py is run for 10 iteration on each node individually, the average speed per node is listed below
+1  - 10.176.86.132 - 1386 MB/s
+2  - 10.176.86.143 - 1853 MB/s
+3  - 10.176.86.146 - 679  MB/s
+4  - 10.176.86.148 - 214  MB/s
+5  - 10.176.86.151 - 716  MB/s
+6  - 10.176.86.161 - 1753 MB/s
+7  - 10.176.86.180 - 1779 MB/s
+8  - 10.176.86.184 - 1280 MB/s
+9  - 10.176.86.142 - n/a (node down)
+10 - 10.176.86.157 - n/a (node down)
+11 - 10.176.86.162 - 1841 MB/s
+12 - 10.176.86.174 - 1838 MB/s
+13 - 10.176.86.187 - n/a (node down)
+All Executed In Parallel
+When s3_teser.py is run for 100 iteration on all nodes at once, the average speed per node is listed below.
+1  - 10.176.86.132 - 454 MB/s
+2  - 10.176.86.143 - 397 MB/s
+3  - 10.176.86.146 - 393 MB/s
+4  - 10.176.86.148 - 235 MB/s
+5  - 10.176.86.151 - 399 MB/s
+6  - 10.176.86.161 - 420 MB/s
+7  - 10.176.86.180 - 399 MB/s
+8  - 10.176.86.184 - 413 MB/s
+9  - 10.176.86.142 - n/a (node down)
+10 - 10.176.86.157 - n/a (node down)
+11 - 10.176.86.162 - 398 MB/s
+12 - 10.176.86.174 - 406 MB/s
+13 - 10.176.86.187 - n/a (node down)
+When executing the full parallel tests, many executions would raise exceptions. These were the 3 most common errors found:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "./s3_tester.py", line 104, in worker
+    _, bytes_read = s3_client.get(stop_time)
+  File "./s3_tester.py", line 77, in get
+    "GET", {"Content-Length": "0"}, stop_time=stop_time)
+  File "./s3_tester.py", line 64, in _request
+    raise BadStatus("Got status: %d", resp.status)
+BadStatus: ('Got status: %d', 404)
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "./s3_tester.py", line 104, in worker
+    _, bytes_read = s3_client.get(stop_time)
+  File "./s3_tester.py", line 77, in get
+    "GET", {"Content-Length": "0"}, stop_time=stop_time)
+  File "./s3_tester.py", line 59, in _request
+    conn.endheaders()
+  File "/usr/lib/python2.7/httplib.py", line 1038, in endheaders
+    self._send_output(message_body)
+  File "/usr/lib/python2.7/httplib.py", line 882, in _send_output
+    self.send(msg)
+  File "/usr/lib/python2.7/httplib.py", line 844, in send
+    self.connect()
+  File "/usr/lib/python2.7/httplib.py", line 1255, in connect
+    HTTPConnection.connect(self)
+  File "/usr/lib/python2.7/httplib.py", line 821, in connect
+    self.timeout, self.source_address)
+  File "/usr/lib/python2.7/socket.py", line 557, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+gaierror: [Errno -3] Try again
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "./s3_tester.py", line 104, in worker
+    _, bytes_read = s3_client.get(stop_time)
+  File "./s3_tester.py", line 77, in get
+    "GET", {"Content-Length": "0"}, stop_time=stop_time)
+  File "./s3_tester.py", line 62, in _request
+    resp = conn.getresponse()
+  File "/usr/lib/python2.7/httplib.py", line 1121, in getresponse
+    response.begin()
+  File "/usr/lib/python2.7/httplib.py", line 438, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python2.7/httplib.py", line 394, in _read_status
+    line = self.fp.readline(_MAXLINE + 1)
+  File "/usr/lib/python2.7/socket.py", line 480, in readline
+    data = self._sock.recv(self._rbufsize)
+  File "/usr/lib/python2.7/ssl.py", line 766, in recv
+    return self.read(buflen)
+  File "/usr/lib/python2.7/ssl.py", line 653, in read
+    v = self._sslobj.read(len)
+error: [Errno 104] Connection reset by peer
+1 Comment

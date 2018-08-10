@@ -1,0 +1,46 @@
+WARNING:tensorflow:From /root/data/benchmarks/scripts/tf_cnn_benchmarks/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:From /root/data/benchmarks/scripts/tf_cnn_benchmarks/benchmark_cnn.py:1120: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+2018-06-28 18:57:06.027239: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-06-28 18:57:06.211866: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:83:00.0
+totalMemory: 11.17GiB freeMemory: 11.10GiB
+2018-06-28 18:57:06.211917: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0
+2018-06-28 18:57:06.591349: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-06-28 18:57:06.591418: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 
+2018-06-28 18:57:06.591434: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N 
+2018-06-28 18:57:06.591863: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10757 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0, compute capability: 3.7)
+2018-06-28 19:00:54.475821: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.33GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:00:54.503531: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:00:54.558206: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.54GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:00:54.674018: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.27GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:00:54.699411: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.54GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:00:54.855577: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.33GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:00:54.906745: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.26GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:00:54.933128: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+WARNING:tensorflow:From /root/data/benchmarks/scripts/tf_cnn_benchmarks/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:From /root/data/benchmarks/scripts/tf_cnn_benchmarks/benchmark_cnn.py:1120: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+2018-06-28 19:38:38.556585: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-06-28 19:38:38.738750: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1392] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: 0000:83:00.0
+totalMemory: 11.92GiB freeMemory: 11.85GiB
+2018-06-28 19:38:38.738803: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1471] Adding visible gpu devices: 0
+2018-06-28 19:38:39.118551: I tensorflow/core/common_runtime/gpu/gpu_device.cc:952] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-06-28 19:38:39.118617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:958]      0 
+2018-06-28 19:38:39.118632: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   N 
+2018-06-28 19:38:39.119056: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1084] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11484 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0, compute capability: 3.7)
+2018-06-28 19:42:20.688275: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:42:20.740503: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.54GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:42:20.848821: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.27GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:42:20.872450: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.54GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:42:21.107693: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.26GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2018-06-28 19:42:21.132245: W tensorflow/core/common_runtime/bfc_allocator.cc:219] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utility-image
+  labels:
+    name: utility-image
+spec:
+  imagePullSecrets:
+        - name: us-south-wdcloud-token
+  containers:
+  - name: utility-image
+    image: 'registry.ng.bluemix.net/wdcloud/utility-image:1512763975'

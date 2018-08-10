@@ -1,0 +1,11 @@
+# This gets built as registry.ng.bluemix.net/dlaas_dev/dlaas-benchmarking-nogpu:latest
+
+FROM tensorflow/tensorflow:1.5.0
+MAINTAINER Benjamin Herta <bherta@us.ibm.com>
+
+RUN apt-get update && apt-get install -y vim curl htop sysstat nethogs git \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN cd /opt && git clone https://github.com/tensorflow/models.git --recursive --depth 1
+
+WORKDIR /opt/models

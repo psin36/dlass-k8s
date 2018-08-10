@@ -1,0 +1,21 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: tfcnnbenchmarkpod-pvc-imagenet-tfrecord
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "ibmc-s3fs-standard"
+    ibm.io/auto-create-bucket: "false"
+    ibm.io/auto-delete-bucket: "false"
+    ibm.io/bucket: "imagenet-tfrecord"
+    ibm.io/endpoint: "https://s3-api.us-geo.objectstorage.service.networklayer.com"
+    ibm.io/region: "us-standard"
+    ibm.io/secret-name: tfcnnbenchmark-secret-imagenet-tfrecord
+    ibm.io/cache-size-gb: "25"
+    ibm.io/chunk-size-mb: "200"
+    ibm.io/parallel-count: "30"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 32Gi # ??

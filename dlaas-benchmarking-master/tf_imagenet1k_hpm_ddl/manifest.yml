@@ -1,0 +1,51 @@
+#-----------------------------------------------------------------------
+#                                                                   
+# This information contains sample code provided in source code form.
+# You may copy, modify, and distribute these sample programs in any 
+# form without payment to IBM for the purposes of developing, using,
+# marketing or distributing application programs conforming to the     
+# application programming interface for the operating platform for     
+# which the sample code is written. Notwithstanding anything to the 
+# contrary, IBM PROVIDES THE SAMPLE SOURCE CODE ON AN 'AS IS' BASIS 
+# AND IBM DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING,     
+# BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OR CONDITIONS OF          
+# MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR      
+# PURPOSE, TITLE, AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT.
+# IBM SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,     
+# SPECIAL, EXEMPLARY OR ECONOMIC CONSEQUENTIAL DAMAGES ARISING OUT     
+# OF THE USE OR OPERATION OF THE SAMPLE SOURCE CODE. IBM SHALL NOT     
+# BE LIABLE FOR LOSS OF, OR DAMAGE TO, DATA, OR FOR LOST PROFITS,     
+# BUSINESS REVENUE, GOODWILL, OR ANTICIPATED SAVINGS. IBM HAS NO     
+# OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS 
+# OR MODIFICATIONS TO THE SAMPLE SOURCE CODE.                        
+#                                                                   
+#-------------------------------------------------------------------
+#If number of GPUs or number of learners is changed, change the ddl_options below to "-mode p:<number-gpus-per-box>x<number-boxes>"
+name: imagenet-tensorflow13-model-with-ddl
+description: Convolutional network model using tensorflow
+version: "1.0"
+gpus: 2
+memory: 50GiB
+cpus: 16
+learners: 1
+
+# Object stores that allow the system to retrieve training data.
+data_stores:
+  - id: sl-internal-os
+    type: mount_cos
+    training_data:
+      container: imagenet-tfrecord
+    training_results:
+      container: imagenet-ddl-results
+    connection:
+      auth_url: https://s3-api.us-geo.objectstorage.service.networklayer.com
+      user_name: idd4n47KjaNrJ891JE6S
+      password: TPqhRQQGaYW5Ew3qpVT4CdYJhJ1lJgpIYhJPY5Yt
+
+framework:
+  name: tensorflow
+  version: "1.4-py3-ddl"
+  command: >
+     -mca btl_tcp_sndbuf 13107200 -mca btl_tcp_rcvbuf 13107200  -mca btl_tcp_links 16 --report-bindings python tf_cnn_benchmarks.py  --data_dir ${DATA_DIR}/ --model=resnet50  --num_gpus=1 --num_preprocessing_threads=8 --batch_size=128 --num_batches=10000 --learning_rate=0.01 --variable_update="ddl" --print_training_accurarcy=True  --ddl_options="-mode p:2x1 -dbg_level 1 -dump_iter 100"
+     #--report-bindings python tf_cnn_benchmarks.py --data_dir ${DATA_DIR}/ --model=resnet50  --num_gpus=1 --num_preprocessing_threads=8 --batch_size=128 --num_batches=10000 --learning_rate=0.01 --variable_update="ddl" --print_training_accurarcy=True  --ddl_options="-mode p:2x2 -dbg_level 1 -dump_iter 100"
+

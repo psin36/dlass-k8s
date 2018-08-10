@@ -1,0 +1,25 @@
+name: <NAME>
+description: Convolutional network model using <FRAMEWORK>
+version: "1.0"
+cpus: <CPUCOUNT>
+gpus: <GPUCOUNT>
+memory: <MEMORY>
+gpu_type: <GPUTYPE>
+
+# Used to store/retrieve models and training data
+data_stores:
+  - id: testinstance
+    type: mount_cos
+    training_data:
+      container: <TRAINBUCKET>
+    training_results:
+      container: <RESULTSBUCKET>
+    connection:
+      auth_url: https://s3-api.dal-us-geo.objectstorage.service.networklayer.com
+      user_name: idd4n47KjaNrJ891JE6S
+      password: TPqhRQQGaYW5Ew3qpVT4CdYJhJ1lJgpIYhJPY5Yt
+framework:
+  name: <FRAMEWORK>
+  version: "<FWVERSION>"
+  command: >
+    <COMMAND>

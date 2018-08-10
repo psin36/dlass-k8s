@@ -1,0 +1,678 @@
+root@learner-1-222ac593-e806-4280-4469-e3f61d78cd34-568ddf5b9c-cdlv9:/mnt/imagenet-ddl-results/model/model-code# /usr/local/cuOpenMPI3.0.0/bin/mpirun --allow-run-as-root -x LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/lib:/usr/local/nvidia/lib64:/usr/lib64:/usr/local/lib/python3.5/dist-packages/tensorflow/python:/opt/DL/ddl/lib:/root/TensorFlow-BLC/blc_MDR_ops:/usr/local/cuOpenMPI3.0.0/lib:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs:/usr/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/root/TensorFlow-BLC/blc_MDR_ops/:/root/TensorFlow-BLC/blc_MDR_ops/:/opt/DL/ddl/lib:/opt/DL/ddl/lib -np $NUM_MPI_TASKS  --rankfile $RANK_FILE -mca btl_tcp_sndbuf 13107200 -mca btl_tcp_rcvbuf 13107200  -mca btl_tcp_links 16 --report-bindings python tf_cnn_benchmarks.py  --data_dir ${DATA_DIR}/ --model=resnet50  --num_gpus=1 --batch_size=128 --num_batches=1000 --learning_rate=0.1 --num_epochs_per_decay=30 --learning_rate_decay_factor=0.1 --display_every=10  --num_intra_threads=0 --print_training_accuracy=True --summary_verbosity=1 --save_summaries_steps=200
+[learner-1-222ac593-e806-4280-4469-e3f61d78cd34-568ddf5b9c-cdlv9:02642] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB][../../../../../../../..]
+[learner-1-222ac593-e806-4280-4469-e3f61d78cd34-568ddf5b9c-cdlv9:02642] MCW rank 4 bound to socket 1[core 8[hwt 0-1]], socket 1[core 9[hwt 0-1]], socket 1[core 10[hwt 0-1]], socket 1[core 11[hwt 0-1]], socket 1[core 12[hwt 0-1]], socket 1[core 13[hwt 0-1]], socket 1[core 14[hwt 0-1]], socket 1[core 15[hwt 0-1]]: [../../../../../../../..][BB/BB/BB/BB/BB/BB/BB/BB]
+[learner-2-222ac593-e806-4280-4469-e3f61d78cd34-56f9689cd5-c5cxm:02833] MCW rank 1 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB][../../../../../../../..]
+[learner-4-222ac593-e806-4280-4469-e3f61d78cd34-5569bdf9cf-rb462:02827] MCW rank 3 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB][../../../../../../../..]
+[learner-2-222ac593-e806-4280-4469-e3f61d78cd34-56f9689cd5-c5cxm:02833] MCW rank 5 bound to socket 1[core 8[hwt 0-1]], socket 1[core 9[hwt 0-1]], socket 1[core 10[hwt 0-1]], socket 1[core 11[hwt 0-1]], socket 1[core 12[hwt 0-1]], socket 1[core 13[hwt 0-1]], socket 1[core 14[hwt 0-1]], socket 1[core 15[hwt 0-1]]: [../../../../../../../..][BB/BB/BB/BB/BB/BB/BB/BB]
+[learner-3-222ac593-e806-4280-4469-e3f61d78cd34-548fb5ff45-jr5dh:02815] MCW rank 2 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB][../../../../../../../..]
+[learner-4-222ac593-e806-4280-4469-e3f61d78cd34-5569bdf9cf-rb462:02827] MCW rank 7 bound to socket 1[core 8[hwt 0-1]], socket 1[core 9[hwt 0-1]], socket 1[core 10[hwt 0-1]], socket 1[core 11[hwt 0-1]], socket 1[core 12[hwt 0-1]], socket 1[core 13[hwt 0-1]], socket 1[core 14[hwt 0-1]], socket 1[core 15[hwt 0-1]]: [../../../../../../../..][BB/BB/BB/BB/BB/BB/BB/BB]
+[learner-3-222ac593-e806-4280-4469-e3f61d78cd34-548fb5ff45-jr5dh:02815] MCW rank 6 bound to socket 1[core 8[hwt 0-1]], socket 1[core 9[hwt 0-1]], socket 1[core 10[hwt 0-1]], socket 1[core 11[hwt 0-1]], socket 1[core 12[hwt 0-1]], socket 1[core 13[hwt 0-1]], socket 1[core 14[hwt 0-1]], socket 1[core 15[hwt 0-1]]: [../../../../../../../..][BB/BB/BB/BB/BB/BB/BB/BB]
+2018-02-15 22:04:30.839862: I ddl_MDR_ops.cc:106] [MPI:0   ] Init _rank=0 _size=8 date=Feb 11 2018 time=07:04:08
+2018-02-15 22:04:30.839895: I ddl_MDR_ops.cc:106] [MPI:4   ] Init _rank=4 _size=8 date=Feb 11 2018 time=07:04:08
+2018-02-15 22:04:30.842215: I ddl_MDR_ops.cc:106] [MPI:1   ] Init _rank=1 _size=8 date=Feb 11 2018 time=07:04:08
+2018-02-15 22:04:30.840790: I ddl_MDR_ops.cc:106] [MPI:2   ] Init _rank=2 _size=8 date=Feb 11 2018 time=07:04:08
+2018-02-15 22:04:30.842198: I ddl_MDR_ops.cc:106] [MPI:5   ] Init _rank=5 _size=8 date=Feb 11 2018 time=07:04:08
+2018-02-15 22:04:30.840790: I ddl_MDR_ops.cc:106] [MPI:6   ] Init _rank=6 _size=8 date=Feb 11 2018 time=07:04:08
+2018-02-15 22:04:30.841368: I ddl_MDR_ops.cc:106] [MPI:7   ] Init _rank=7 _size=8 date=Feb 11 2018 time=07:04:08
+2018-02-15 22:04:30.841459: I ddl_MDR_ops.cc:106] [MPI:3   ] Init _rank=3 _size=8 date=Feb 11 2018 time=07:04:08
+DDL: rank: 4, size: 8, gpuid: 1, hosts: 4
+DDL: rank: 0, size: 8, gpuid: 0, hosts: 4
+2018-02-15 22:04:30.915152: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-02-15 22:04:30.915587: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+DDL: rank: 5, size: 8, gpuid: 1, hosts: 4
+DDL: rank: 1, size: 8, gpuid: 0, hosts: 4
+2018-02-15 22:04:30.919216: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-02-15 22:04:30.919514: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+DDL: rank: 6, size: 8, gpuid: 1, hosts: 4
+DDL: rank: 2, size: 8, gpuid: 0, hosts: 4
+2018-02-15 22:04:30.919313: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-02-15 22:04:30.919465: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+DDL: rank: 7, size: 8, gpuid: 1, hosts: 4
+2018-02-15 22:04:30.930876: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+DDL: rank: 3, size: 8, gpuid: 0, hosts: 4
+2018-02-15 22:04:31.001106: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-02-15 22:04:31.391912: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:82:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-02-15 22:04:31.391952: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 1, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+2018-02-15 22:04:31.393569: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:81:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-02-15 22:04:31.393606: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+2018-02-15 22:04:31.391519: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:81:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-02-15 22:04:31.391562: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+2018-02-15 22:04:31.393168: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:82:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-02-15 22:04:31.393209: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 1, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+2018-02-15 22:04:31.398235: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:82:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-02-15 22:04:31.398281: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 1, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+2018-02-15 22:04:31.411303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:82:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-02-15 22:04:31.411347: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 1, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+2018-02-15 22:04:31.411853: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:81:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-02-15 22:04:31.411893: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+2018-02-15 22:04:31.424062: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:81:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-02-15 22:04:31.424102: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+2018-02-15 22:04:31.752645: I ddl_MDR_ops.cc:193] [MPI:0   ]  name=Init local_gpuid=0 local_rank=0 local_size=2
+2018-02-15 22:04:31.752645: I ddl_MDR_ops.cc:193] [MPI:4   ]  name=Init local_gpuid=1 local_rank=1 local_size=2
+2018-02-15 22:04:31.754983: I ddl_MDR_ops.cc:193] [MPI:5   ]  name=Init local_gpuid=1 local_rank=1 local_size=2
+2018-02-15 22:04:31.753566: I ddl_MDR_ops.cc:193] [MPI:6   ]  name=Init local_gpuid=1 local_rank=1 local_size=2
+2018-02-15 22:04:31.754148: I ddl_MDR_ops.cc:193] [MPI:7   ]  name=Init local_gpuid=1 local_rank=1 local_size=2
+2018-02-15 22:04:31.754993: I ddl_MDR_ops.cc:193] [MPI:1   ]  name=Init local_gpuid=0 local_rank=0 local_size=2
+2018-02-15 22:04:31.753568: I ddl_MDR_ops.cc:193] [MPI:2   ]  name=Init local_gpuid=0 local_rank=0 local_size=2
+2018-02-15 22:04:31.754149: I ddl_MDR_ops.cc:193] [MPI:3   ]  name=Init local_gpuid=0 local_rank=0 local_size=2
+I 22:04:31.753  2646 2790 DDL:748 ] [MPI:0   ] ==== IBM Corp. DDL Feb 11 2018 07:02:29 + (MPI 3.1, CUDA 9000, NCCL 1.3.x) ====
+I 22:04:31.753 2646  2790 DDL:799 ] [MPI:0   ] -mode bn:2x4 -dbg_level 1 -dump_iter 100 -pipe 2 -pack 1
+W 22:04:31.753 2646  2790 DDL:875 ] [MPI:0   ] USE_OPENMP is off
+D 22:04:31.961 2646  2790 DDL:1180] [MPI:0   ] enable_nccl
+DDL: module 3 initialized.
+DDL: module 7 initialized.
+DDL: module 4 initialized.
+DDL: module 0 initialized.
+DDL: module 6 initialized.
+DDL: module 2 initialized.
+DDL: module 5 initialized.
+DDL: module 1 initialized.
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             128.0 per device
+Num batches: 1000
+Num epochs:  0.10
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             128.0 per device
+Num batches: 1000
+Num epochs:  0.10
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             128.0 per device
+Num batches: 1000
+Num epochs:  0.10
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             128.0 per device
+Num batches: 1000
+Num epochs:  0.10
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             128.0 per device
+Num batches: 1000
+Num epochs:  0.10
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             128.0 per device
+Num batches: 1000
+Num epochs:  0.10
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             128.0 per device
+Num batches: 1000
+Num epochs:  0.10
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+TensorFlow:  1.5
+Model:       resnet50
+Dataset:     imagenet
+Mode:        training
+SingleSess:  False
+Batch size:  128 global
+             128.0 per device
+Num batches: 1000
+Num epochs:  0.10
+Devices:     ['/gpu:0']
+Data format: NCHW
+Layout optimizer: False
+Optimizer:   sgd
+Variables:   parameter_server
+==========
+Generating model
+W0215 22:04:39.599335 47637188600064 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+W0215 22:04:39.657579 47924970742016 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+W0215 22:04:39.898082 47249333928192 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+W0215 22:04:39.916808 47612869665024 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+W0215 22:04:39.955713 47413255864576 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+W0215 22:04:40.158501 47020336177408 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+W0215 22:04:40.944027 47304809103616 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+W0215 22:04:40.944145 47115319742720 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/convnet_builder.py:372: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+W0215 22:04:41.462016 47637188600064 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/benchmark_cnn.py:1345: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+W0215 22:04:41.509757 47924970742016 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/benchmark_cnn.py:1345: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+W0215 22:04:41.734989 47249333928192 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/benchmark_cnn.py:1345: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+W0215 22:04:41.760499 47612869665024 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/benchmark_cnn.py:1345: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+W0215 22:04:41.806464 47413255864576 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/benchmark_cnn.py:1345: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+W0215 22:04:42.021885 47020336177408 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/benchmark_cnn.py:1345: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+DDL: rank: 0, size: 8, gpuid: 0, hosts: 4
+2018-02-15 22:04:42.098314: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+DDL: rank: 3, size: 8, gpuid: 0, hosts: 4
+2018-02-15 22:04:42.148594: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+DDL: rank: 1, size: 8, gpuid: 0, hosts: 4
+2018-02-15 22:04:42.374336: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+DDL: rank: 4, size: 8, gpuid: 1, hosts: 4
+2018-02-15 22:04:42.419827: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 1, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+DDL: rank: 7, size: 8, gpuid: 1, hosts: 4
+2018-02-15 22:04:42.472645: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 1, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+DDL: rank: 5, size: 8, gpuid: 1, hosts: 4
+2018-02-15 22:04:42.698470: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 1, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+W0215 22:04:42.802543 47115319742720 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/benchmark_cnn.py:1345: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+W0215 22:04:42.810543 47304809103616 tf_logging.py:118] From /mnt/imagenet-ddl-results/model/model-code/benchmark_cnn.py:1345: Supervisor.__init__ (from tensorflow.python.training.supervisor) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please switch to tf.train.MonitoredTrainingSession
+DDL: rank: 2, size: 8, gpuid: 0, hosts: 4
+2018-02-15 22:04:43.473211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+DDL: rank: 6, size: 8, gpuid: 1, hosts: 4
+2018-02-15 22:04:43.480874: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 1, name: Tesla P100-PCIE-16GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+I0215 22:04:45.050424 47304809103616 tf_logging.py:110] Starting standard services.
+W0215 22:04:45.050648 47304809103616 tf_logging.py:118] Standard services need a 'logdir' passed to the SessionManager
+I0215 22:04:45.050733 47304809103616 tf_logging.py:110] Starting queue runners.
+I0215 22:04:45.049947 47637188600064 tf_logging.py:110] Starting standard services.
+W0215 22:04:45.050335 47637188600064 tf_logging.py:118] Standard services need a 'logdir' passed to the SessionManager
+I0215 22:04:45.050424 47637188600064 tf_logging.py:110] Starting queue runners.
+I0215 22:04:45.053379 47924970742016 tf_logging.py:110] Starting standard services.
+W0215 22:04:45.053766 47924970742016 tf_logging.py:118] Standard services need a 'logdir' passed to the SessionManager
+I0215 22:04:45.053856 47924970742016 tf_logging.py:110] Starting queue runners.
+I0215 22:04:45.056027 47413255864576 tf_logging.py:110] Starting standard services.
+I0215 22:04:45.055451 47115319742720 tf_logging.py:110] Starting standard services.
+W0215 22:04:45.055703 47115319742720 tf_logging.py:118] Standard services need a 'logdir' passed to the SessionManager
+W0215 22:04:45.056272 47413255864576 tf_logging.py:118] Standard services need a 'logdir' passed to the SessionManager
+I0215 22:04:45.055793 47115319742720 tf_logging.py:110] Starting queue runners.
+I0215 22:04:45.056358 47413255864576 tf_logging.py:110] Starting queue runners.
+I0215 22:04:45.059364 47249333928192 tf_logging.py:110] Starting standard services.
+W0215 22:04:45.059736 47249333928192 tf_logging.py:118] Standard services need a 'logdir' passed to the SessionManager
+I0215 22:04:45.059825 47249333928192 tf_logging.py:110] Starting queue runners.
+I0215 22:04:45.058496 47612869665024 tf_logging.py:110] Starting standard services.
+W0215 22:04:45.058729 47612869665024 tf_logging.py:118] Standard services need a 'logdir' passed to the SessionManager
+I0215 22:04:45.058814 47612869665024 tf_logging.py:110] Starting queue runners.
+I0215 22:04:45.064405 47020336177408 tf_logging.py:110] Starting standard services.
+W0215 22:04:45.064638 47020336177408 tf_logging.py:118] Standard services need a 'logdir' passed to the SessionManager
+I0215 22:04:45.064725 47020336177408 tf_logging.py:110] Starting queue runners.
+2018-02-15 22:04:56.003843: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 2502 of 10000
+2018-02-15 22:04:56.003909: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 2502 of 10000
+2018-02-15 22:04:56.003719: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 2502 of 10000
+2018-02-15 22:04:56.003702: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 2502 of 10000
+2018-02-15 22:04:56.004381: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 2502 of 10000
+2018-02-15 22:04:56.004420: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 2502 of 10000
+2018-02-15 22:04:56.113655: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 966 of 10000
+2018-02-15 22:04:56.113680: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 966 of 10000
+2018-02-15 22:05:01.178556: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+2018-02-15 22:05:01.178556: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+2018-02-15 22:05:02.232347: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+2018-02-15 22:05:02.237105: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+2018-02-15 22:05:02.257692: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+2018-02-15 22:05:02.257682: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+Running warm up
+Running warm up
+Running warm up
+Running warm up
+Running warm up
+Running warm up
+2018-02-15 22:05:05.537066: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 9517 of 10000
+2018-02-15 22:05:05.537710: I tensorflow/core/kernels/shuffle_dataset_op.cc:112] Filling up shuffle buffer (this may take a while): 9523 of 10000
+2018-02-15 22:05:05.603471: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+2018-02-15 22:05:05.603465: I tensorflow/core/kernels/shuffle_dataset_op.cc:126] Shuffle buffer filled.
+W 22:05:05.890 2646  2814 DDL:1767] [MPI:0   ] forced to apply RING to dim[1] as NCCLB   cannot be used
+W 22:05:05.890 2646  2814 DDL:1767] [MPI:0   ] forced to apply RING to dim[1] as NCCLR   cannot be used
+Running warm up
+Running warm up
+Done warm up
+Step	Img/sec	total_loss	top_1_accuracy	top_5_accuracy
+Done warm up
+Step	Img/sec	total_loss	top_1_accuracy	top_5_accuracy
+Done warm up
+Done warm up
+Step	Img/sec	total_loss	top_1_accuracy	top_5_accuracy
+Step	Img/sec	total_loss	top_1_accuracy	top_5_accuracy
+Done warm up
+Done warm up
+Step	Img/sec	total_loss	top_1_accuracy	top_5_accuracy
+Step	Img/sec	total_loss	top_1_accuracy	top_5_accuracy
+Done warm up
+Step	Img/sec	total_loss	top_1_accuracy	top_5_accuracy
+Done warm up
+Step	Img/sec	total_loss	top_1_accuracy	top_5_accuracy
+I0215 22:05:15.401769 47028799276800 tf_logging.py:110] Starting real work at step 10 at time Thu Feb 15 22:05:15 2018
+I0215 22:05:15.401502 47643929609984 tf_logging.py:110] Starting real work at step 10 at time Thu Feb 15 22:05:15 2018
+I0215 22:05:15.469407 47257971853056 tf_logging.py:110] Starting real work at step 10 at time Thu Feb 15 22:05:15 2018
+I0215 22:05:15.494019 47419788101376 tf_logging.py:110] Starting real work at step 10 at time Thu Feb 15 22:05:15 2018
+I0215 22:05:15.495586 47124014171904 tf_logging.py:110] Starting real work at step 10 at time Thu Feb 15 22:05:15 2018
+I0215 22:05:15.505629 47621318117120 tf_logging.py:110] Starting real work at step 10 at time Thu Feb 15 22:05:15 2018
+I0215 22:05:15.522746 47933435152128 tf_logging.py:110] Starting real work at step 10 at time Thu Feb 15 22:05:15 2018
+I0215 22:05:15.567385 47313277945600 tf_logging.py:110] Starting real work at step 10 at time Thu Feb 15 22:05:15 2018
+1	images/sec: 192.3 +/- 0.0 (jitter = 0.0)	8.511	0.000	0.000
+1	images/sec: 192.3 +/- 0.0 (jitter = 0.0)	8.449	0.000	0.000
+1	images/sec: 191.9 +/- 0.0 (jitter = 0.0)	8.520	0.000	0.000
+1	images/sec: 191.7 +/- 0.0 (jitter = 0.0)	8.512	0.000	0.000
+1	images/sec: 191.7 +/- 0.0 (jitter = 0.0)	8.567	0.000	0.000
+1	images/sec: 191.4 +/- 0.0 (jitter = 0.0)	8.453	0.000	0.000
+11	images/sec: 191.3 +/- 0.0 (jitter = 0.0)	8.523	0.000	0.000
+	images/sec: 191.7 +/- 0.0 (jitter = 0.0)	8.471	0.000	0.000
+10	images/sec: 189.6 +/- 1.2 (jitter = 4.9)10	1010	images/sec: 189.5 +/- 1.2 (jitter = 4.9)	8.382	0.000	0.000
+	images/sec: 189.5 +/- 1.2 (jitter = 5.0)	8.385	0.000	0.008
+108.352	0.000	0.000
+		images/sec: 189.5 +/- 1.3 (jitter = 3.9)	images/sec: 189.5 +/- 1.2 (jitter = 5.0)8.371	0.000		0.000
+10	images/sec: 189.5 +/- 1.2 (jitter = 4.8)	8.402	0.000	8.377100.000
+		0.000images/sec: 189.5 +/- 1.9 (jitter = 4.6)		0.000
+8.378	0.000	0.000
+10	images/sec: 189.5 +/- 1.2 (jitter = 5.0)	8.392	0.000	0.000
+202020	images/sec: 190.8 +/- 0.8 (jitter = 4.1)	8.488	0.000	0.008
+20	images/sec: 190.8 +/- 0.8 (jitter = 3.8)	8.460	0.000	0.000
+	20	images/sec: 190.8 +/- 0.8 (jitter = 4.1)	8.555	0.000	0.000
+20	images/sec: 190.9 +/- 1.1 (jitter = 3.8)	8.500	0.000	0.000
+20	images/sec: 190.8 +/- 0.8 (jitter = 3.8)	8.452	0.000	0.008
+images/sec: 190.8 +/- 0.8 (jitter = 4.0)	images/sec: 190.8 +/- 0.8 (jitter = 4.1)	8.476	0.000	0.008
+	8.459	0.000	0.008
+20	images/sec: 190.8 +/- 0.8 (jitter = 4.0)	8.511	0.000	0.000
+30	images/sec: 191.4 +/- 0.6 (jitter = 2.9)	8.834	0.000	0.008
+30	images/sec: 191.4 +/- 0.6 (jitter = 2.9)	8.808	0.000	0.008
+3030	images/sec: 191.4 +/- 0.8 (jitter = 2.4)	8.713	0.000	0.008
+30	images/sec: 191.4 +/- 0.6 (jitter = 2.9)	9.323	0.000	0.008
+	images/sec: 191.4 +/- 0.6 (jitter = 3.0)	8.784	0.000	30	images/sec: 191.4 +/- 0.6 (jitter = 2.6)	8.679	0.000	0.008
+0.008
+30	images/sec: 191.4 +/- 0.6 (jitter = 2.7)	8.772	0.000	0.008
+30	images/sec: 191.4 +/- 0.6 (jitter = 2.8)	9.058	0.000	0.008
+40	images/sec: 191.5 +/- 0.5 (jitter = 2.5)	8.395	0.000	0.008
+40	images/sec: 191.5 +/- 0.5 (jitter = 2.7)	8.324	0.000	0.000
+4040	images/sec: 191.5 +/- 0.5 (jitter = 2.7)	8.243	0.000	0.000
+	images/sec: 191.5 +/- 0.5 (jitter = 2.4)40	images/sec: 191.5 +/- 0.5 (jitter = 2.6)	8.296	0.000	0.000
+	8.41640	0.000	0.000
+	40	images/sec: 191.5 +/- 0.5 (jitter = 2.5)	8.303	0.000	0.008
+images/sec: 191.5 +/- 0.6 (jitter = 2.4)	8.320	40	images/sec: 191.5 +/- 0.5 (jitter = 2.5)	8.252	0.000	0.008
+0.000	0.008
+50	images/sec: 190.1 +/- 1.2 (jitter = 2.7)	8.334	0.000	0.008
+50	images/sec: 190.1 +/- 1.3 (jitter = 2.9)	8.389	0.000	0.008
+50	images/sec: 190.1 +/- 1.3 (jitter = 2.9)	8.305	0.000	0.008
+5050		50images/sec: 190.1 +/- 1.2 (jitter = 2.7)images/sec: 190.1 +/- 1.3 (jitter = 2.7)			images/sec: 190.1 +/- 1.3 (jitter = 2.8)8.2868.413	50	images/sec: 190.1 +/- 1.3 (jitter = 2.7)	8.351	0.000	0.008
+0.0000.0008.380			0.000
+0.008
+0.00050	images/sec: 190.1 +/- 1.3 (jitter = 2.5)	8.376	0.000	0.008
+	0.008
+60	images/sec: 190.7 +/- 1.1 (jitter = 2.8)	8.054	0.000	0.008
+60	images/sec: 190.7 +/- 1.1 (jitter = 2.8)	8.034	0.000	0.000
+6060	images/sec: 190.7 +/- 1.0 (jitter = 2.7)	7.939	0.000	0.000
+	images/sec: 190.7 +/- 1.0 (jitter = 2.6)	7.977	0.000	0.008
+60	images/sec: 190.7 +/- 1.1 (jitter = 2.6)	7.991	0.000	0.000
+6060	images/sec: 190.7 +/- 1.1 (jitter = 2.8)	7.957	0.000	0.008
+	images/sec: 190.7 +/- 1.1 (jitter = 2.6)	8.010	0.000	0.000
+60	images/sec: 190.7 +/- 1.1 (jitter = 2.5)	8.053	0.000	0.008
+70	images/sec: 190.9 +/- 0.9 (jitter = 2.9)	8.016	0.000	0.023
+7070	images/sec: 190.9 +/- 0.9 (jitter = 2.8)	8.000	0.000	0.016
+	images/sec: 190.9 +/- 0.9 (jitter = 3.0)	707.999	0.000	0.008
+70		images/sec: 190.9 +/- 0.9 (jitter = 3.0)images/sec: 190.9 +/- 0.9 (jitter = 2.8)	70	7.951	0.000	0.016
+	images/sec: 190.9 +/- 0.9 (jitter = 2.9)	7.995	0.000	0.008
+8.036	0.00070	images/sec: 190.9 +/- 0.9 (jitter = 2.9)	7.925	0.000	0.008
+	0.008
+70	images/sec: 190.9 +/- 0.9 (jitter = 2.7)	8.040	0.000	0.008
+80	images/sec: 191.2 +/- 0.8 (jitter = 2.9)	7.935	0.008	0.016
+8080	images/sec: 191.2 +/- 0.8 (jitter = 2.8)	7.962	0.008	0.016
+80	images/sec: 191.2 +/- 0.8 (jitter = 3.0)	7.975	0.008	0.016
+80	images/sec: 191.2 +/- 0.8 (jitter = 3.0)	8.024	0.008	0.008
+	images/sec: 191.2 +/- 0.8 (jitter = 3.1)	7.963	0.008	0.008
+80	images/sec: 191.2 +/- 0.8 (jitter = 2.9)	7.960	0.008	0.008
+8080	images/sec: 191.2 +/- 0.8 (jitter = 2.9)	7.924	0.008	0.016
+	images/sec: 191.2 +/- 0.8 (jitter = 3.1)	7.935	0.008	0.008
+9090	images/sec: 191.6 +/- 0.7 (jitter = 2.8)	7.924	0.000	0.008
+90	images/sec: 191.6 +/- 0.8 (jitter = 2.4)	7.985	0.000	0.000
+	90images/sec: 191.6 +/- 0.7 (jitter = 2.5)	90	images/sec: 191.5 +/- 0.7 (jitter = 2.6)	7.904	0.000	0.000
+	images/sec: 191.5 +/- 0.7 (jitter = 2.6)90	images/sec: 191.5 +/- 0.7 (jitter = 2.6)	7.917	0.000	0.000
+	7.9167.92690	images/sec: 191.5 +/- 0.7 (jitter = 2.5)	7.961	0.000	0.000
+		0.000	0.000
+0.000	0.008
+90	images/sec: 191.6 +/- 0.7 (jitter = 2.6)	7.900	0.000	0.000
+I 22:06:16.044 2646  2814 DDL:2745] [MPI:0   ] max_jitter=5.246e-03 min_jitter=2.434e-04 : 0.000e+00
+I 22:06:16.044 2646  2814 DDL:3151] [MPI:0   ] BLC performance statistics sw_pipe_buf_size=25559104
+I 22:06:16.126 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:06:16.127 2646  2814 DDL:427 ] [MPI:0   ] tid   dim   algo         |   time        wait              call              op                send(MB)    recv(MB)    bw(GB/s)  
+I 22:06:16.127 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:06:16.127 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b0           |   7.015e+01   1.533e-03         2.942e-05         0.000e+00         2.556e+01   2.556e+01   3.272e+01  
+I 22:06:16.127 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:06:16.127 2646  2814 DDL:487 ] [MPI:0   ] 0     d1    r[2   -5   ) |   7.016e+01   2.054e-02 (0.15)  7.955e-05 (0.17)  1.289e-04 (0.01)  9.585e+00   9.585e+00   9.298e-01   
+I 22:06:16.127 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b5           |   7.018e+01   2.093e-06         1.194e-05         0.000e+00         2.556e+01   2.556e+01   3.642e+03  
+I 22:06:16.127 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:06:16.127 2646  2814 DDL:487 ] [MPI:0   ] 0     d1    r[7   -13  ) |   7.018e+01   3.840e-02 (0.03)  1.294e-04 (0.21)  1.461e-04 (1.01)  1.917e+01   1.917e+01   9.950e-01   
+I 22:06:16.127 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:06:16.127 2646  2814 DDL:487 ] [MPI:0   ] 0     d1    r[14  -17  ) |   7.022e+01   1.969e-02 (0.13)  5.126e-05 (0.17)  3.000e-16 (1.00)  9.585e+00   9.585e+00   9.712e-01   
+I 22:06:16.127 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b17          |   7.024e+01   1.050e-05         2.197e-05         0.000e+00         2.556e+01   2.556e+01   1.574e+03  
+I 22:06:16.127 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:06:16.127 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b19          |   7.024e+01   1.400e-03         1.936e-05         0.000e+00         2.556e+01   2.556e+01   3.600e+01  
+I 22:06:16.127 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:06:16.128 2646  2814 DDL:533 ] [MPI:0   ] bn:2x4                   |      *sum =   8.157e-02         3.429e-04         2.750e-04         *e2e = 8.221e-02
+I 22:06:16.128 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:06:16.128 2646  2814 DDL:3181] [MPI:0   ] e2e_min=8.216e-02 e2e_max=8.252e-02
+100100	images/sec: 191.8 +/- 0.7 (jitter = 2.4)	7.862	0.000	0.008
+100	images/sec: 191.8 +/- 0.7 (jitter = 2.6)	7.861	0.000	0.008
+	images/sec: 191.8 +/- 0.7 (jitter = 2.5)	8.038	0.000	0.008
+100	images/sec: 191.8 +/- 0.7 (jitter = 2.5)	7.843	0.000	0.008
+100	images/sec: 191.8 +/- 0.6 (jitter = 2.7)	7.929	0.000	0.008
+100	images/sec: 191.8 +/- 0.6 (jitter = 2.7)	8.019	0.000	0.000
+100	images/sec: 191.8 +/- 0.7 (jitter = 2.7)	8.001	0.000100	images/sec: 191.8 +/- 0.7 (jitter = 2.8)	8.018	0.000	0.008
+	0.008
+110	images/sec: 192.0 +/- 0.6 (jitter = 2.3)	7.943	0.000	0.000
+110	images/sec: 192.0 +/- 0.6 (jitter = 2.3)	7.864	0.000	0.000
+110	images/sec: 192.0 +/- 0.6 (jitter = 2.3)	7.864	0.000	0.008
+110	images/sec: 192.0 +/- 0.6 (jitter = 2.3)	7.942	0.000	0.000
+110110	images/sec: 192.0 +/- 0.6 (jitter = 2.3)	7.845	0.000	0.000
+	images/sec: 192.0 +/- 0.6 (jitter = 2.3)	7.825110	images/sec: 192.0 +/- 0.6 (jitter = 2.6)	7.839	0.000		0.000
+0.000110		images/sec: 192.0 +/- 0.6 (jitter = 2.5)	7.834	0.000	0.000
+0.008
+120120	images/sec: 192.2 +/- 0.5 (jitter = 2.1)	7.909	0.008	0.008
+	images/sec: 192.2 +/- 0.5 (jitter = 2.1)	7.949	0.000	0.008
+120120	images/sec: 192.2 +/- 0.6 (jitter = 2.3)	7.923	0.000	0.008
+	images/sec: 192.2 +/- 0.6 (jitter = 2.3)	7.960	0.000	0.008
+120	images/sec: 192.2 +/- 0.6 (jitter = 2.1)	7.947	0.000	0.008
+120	images/sec: 192.2 +/- 0.6 (jitter = 2.2)	7.912	0.008	120	images/sec: 192.2 +/- 0.6 (jitter = 2.1)	7.954	0.000	0.008
+0.008
+120	images/sec: 192.2 +/- 0.6 (jitter = 2.1)	7.977	0.008	0.008
+130130	images/sec: 192.4 +/- 0.5 (jitter = 2.0)	7.826	0.008	0.008
+	images/sec: 192.4 +/- 0.5 (jitter = 2.1)	7.836	0.000	0.016
+130	130	images/sec: 192.4 +/- 0.5 (jitter = 2.1)	7.842	0.008	0.008
+130	images/sec: 192.4 +/- 0.5 (jitter = 2.1)	7.831	0.008	0.016
+images/sec: 192.4 +/- 0.5 (jitter = 2.1)	7.840	0.008	0.023
+130130	images/sec: 192.4 +/- 0.5 (jitter = 2.1)	7.909	0.008	0.023
+130	images/sec: 192.4 +/- 0.5 (jitter = 2.3)	7.842		0.000	0.008
+images/sec: 192.4 +/- 0.5 (jitter = 2.2)	7.846	0.008	0.016
+140	images/sec: 192.6 +/- 0.5 (jitter = 2.0)	7.846	0.000	0.000
+140	images/sec: 192.6 +/- 0.5 (jitter = 2.2)	7.850	0.000	0.000
+140	images/sec: 192.6 +/- 0.5 (jitter = 2.1)	7.856	0.000	0.000
+140	images/sec: 192.5 +/- 0.5 (jitter = 2.1)	7.876	0.000	0.000
+140	images/sec: 192.6 +/- 0.5 (jitter = 2.1)	7.900	0.000	0.000
+140	images/sec: 192.6 +/- 0.5 (jitter = 2.2)	7.852	0.000	0.000
+140140	images/sec: 192.6 +/- 0.5 (jitter = 2.2)	7.903	0.000	0.000
+	images/sec: 192.6 +/- 0.5 (jitter = 2.1)	7.853	0.000	0.000
+150	images/sec: 192.6 +/- 0.5 (jitter = 2.3)	7.856	0.000	0.008
+150	images/sec: 192.6 +/- 0.5 (jitter = 2.3)	7.872	0.000	0.016
+150	images/sec: 192.6 +/- 0.4 (jitter = 2.1)	7.904	0.000	0.008
+150	images/sec: 192.6 +/- 0.4 (jitter = 2.2)	7.904	0.000	0.000
+150150	images/sec: 192.6 +/- 0.5 (jitter = 2.1)	7.854	0.000	0.008
+	images/sec: 192.6 +/- 0.5 (jitter = 2.1)	1501507.881	0.000	0.000
+		images/sec: 192.6 +/- 0.5 (jitter = 2.1)	images/sec: 192.6 +/- 0.5 (jitter = 2.1)7.964		7.8720.000		0.0000.016
+	0.023
+160	images/sec: 192.7 +/- 0.4 (jitter = 2.1)	7.817	0.000	0.000
+160	images/sec: 192.7 +/- 0.4 (jitter = 2.1)	7.841	0.000	0.000
+160	images/sec: 192.7 +/- 0.4 (jitter = 2.1)	7.833	0.000	0.016
+160	images/sec: 192.7 +/- 0.4 (jitter = 2.2)	7.831	0.000	0.000
+160	images/sec: 192.7 +/- 0.4 (jitter = 2.1)	7.923	0.000	0.008
+160160160			images/sec: 192.7 +/- 0.4 (jitter = 2.2)	images/sec: 192.7 +/- 0.4 (jitter = 2.1)	7.850	0.000images/sec: 192.7 +/- 0.4 (jitter = 2.2)	7.828	0.000	0.008
+7.813	0.000
+	0.000	0.016
+170	images/sec: 192.8 +/- 0.4 (jitter = 2.1)	7.901	0.000	0.031
+170	images/sec: 192.8 +/- 0.4 (jitter = 2.1)	7.951	0.000	0.016
+170	images/sec: 192.8 +/- 0.4 (jitter = 2.1)	7.882	0.000	0.000
+170	images/sec: 192.8 +/- 0.4 (jitter = 2.1)	7.831	170	images/sec: 192.8 +/- 0.4 (jitter = 2.0)	7.820	0.000	0.031
+170	images/sec: 192.8 +/- 0.4 (jitter = 2.0)	7.780	0.000	0.023
+1700.000	0.023
+170		images/sec: 192.8 +/- 0.4 (jitter = 2.1)	7.809	0.000	0.031
+images/sec: 192.8 +/- 0.4 (jitter = 2.1)	7.783	0.000	0.016
+180	images/sec: 192.9 +/- 0.4 (jitter = 2.0)	7.827	0.000	0.008
+180	images/sec: 192.9 +/- 0.4 (jitter = 2.1)	7.851	0.000	0.008
+180	images/sec: 192.9 +/- 0.4 (jitter = 2.1)	7.818	0.000	0.031
+180180	images/sec: 192.9 +/- 0.4 (jitter = 2.1)	7.819	0.000	0.016
+	images/sec: 192.9 +/- 0.4 (jitter = 2.1)	7.825180	images/sec: 192.9 +/- 0.4 (jitter = 2.2)	7.794	0.000	0.008
+180		0.000	images/sec: 192.9 +/- 0.4 (jitter = 2.1)0.008
+180	images/sec: 192.9 +/- 0.4 (jitter = 2.2)	7.835	0.000	0.016
+	7.840	0.000	0.000
+190	images/sec: 193.0 +/- 0.4 (jitter = 2.1)	7.997	0.000	0.000
+190	images/sec: 193.0 +/- 0.4 (jitter = 2.1)190		images/sec: 193.0 +/- 0.4 (jitter = 2.1)7.825		190	images/sec: 193.0 +/- 0.4 (jitter = 2.1)	7.833	0.000	0.000
+190190	images/sec: 193.0 +/- 0.4 (jitter = 2.3)	7.942	0.000	0.008
+0.0001907.796	0.000	0.008
+190	images/sec: 193.0 +/- 0.4 (jitter = 2.2)				7.824	0.000	0.008
+0.000
+images/sec: 193.0 +/- 0.4 (jitter = 2.1)images/sec: 193.0 +/- 0.4 (jitter = 2.1)		7.799	0.0007.842	0.008
+	0.000	0.008
+I 22:07:21.910 2646  2814 DDL:3151] [MPI:0   ] BLC performance statistics sw_pipe_buf_size=25559104
+I 22:07:21.911  2831 3003 DDL:2745] [MPI:3   ] max_jitter=4.216e-03 min_jitter=1.391e-04 : 0.000e+00
+I 22:07:21.993 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:07:21.993 2646  2814 DDL:427 ] [MPI:0   ] tid   dim   algo         |   time        wait              call              op                send(MB)    recv(MB)    bw(GB/s)  
+I 22:07:21.993 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:07:21.994 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b0           |   6.578e+01   1.556e-03         2.957e-05         0.000e+00         2.556e+01   2.556e+01   3.223e+01  
+I 22:07:21.994 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:07:21.994 2646  2814 DDL:487 ] [MPI:0   ] 0     d1    r[2   -5   ) |   6.578e+01   1.932e-02 (0.07)  6.927e-05 (0.09)  1.260e-04 (0.02)  9.585e+00   9.585e+00   9.888e-01   
+I 22:07:21.994 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b5           |   6.580e+01   2.040e-06         1.170e-05         0.000e+00         2.556e+01   2.556e+01   3.720e+03  
+I 22:07:21.994 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:07:21.994 2646  2814 DDL:487 ] [MPI:0   ] 0     d1    r[7   -13  ) |   6.580e+01   3.755e-02 (0.04)  1.231e-04 (0.18)  1.207e-04 (1.00)  1.917e+01   1.917e+01   1.018e+00   
+I 22:07:21.994 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:07:21.994 2646  2814 DDL:487 ] [MPI:0   ] 0     d1    r[14  -17  ) |   6.584e+01   1.835e-02 (0.01)  4.585e-05 (0.56)  3.000e-16 (1.00)  9.585e+00   9.585e+00   1.042e+00   
+I 22:07:21.994 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b17          |   6.586e+01   8.373e-06         2.064e-05         0.000e+00         2.556e+01   2.556e+01   1.762e+03  
+I 22:07:21.994 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:07:21.994 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b19          |   6.586e+01   5.420e-03         1.997e-05         0.000e+00         2.556e+01   2.556e+01   9.396e+00  
+I 22:07:21.994 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:07:21.994 2646  2814 DDL:533 ] [MPI:0   ] bn:2x4                   |      *sum =   8.221e-02         3.202e-04         2.467e-04         *e2e = 8.359e-02
+I 22:07:21.994 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:07:21.995 2646  2814 DDL:3181] [MPI:0   ] e2e_min=8.266e-02 e2e_max=8.399e-02
+200200200	images/sec: 193.1 +/- 0.4 (jitter = 2.1)	7.800	0.000	0.000
+200	images/sec: 193.1 +/- 0.3 (jitter = 2.2)	7.837	0.000	0.000
+	images/sec: 193.1 +/- 0.4 (jitter = 2.1)	7.820200	images/sec: 193.1 +/- 0.4 (jitter = 2.2)	7.792	0.000	0.000
+	images/sec: 193.1 +/- 0.3 (jitter = 2.2)	7.806	0.000	0.000
+200	images/sec: 193.1 +/- 0.4 (jitter = 2.1)	7.813	0.000	0.000
+	2002000.000		0.000
+	images/sec: 193.1 +/- 0.4 (jitter = 2.1)images/sec: 193.1 +/- 0.4 (jitter = 2.1)		7.8017.828		0.0000.000		0.000
+0.000
+210	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.814	0.000	0.008
+210	images/sec: 193.1 +/- 0.3 (jitter = 2.1)	7.893	0.000	0.008
+210	images/sec: 193.1 +/- 0.3 (jitter = 2.1)	7.821	210	images/sec: 193.1 +/- 0.3 (jitter = 2.1)	7.811	0.000	0.000
+210	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.841	0.000	0.000
+2100.000	0.000
+210	images/sec: 193.1 +/- 0.3 (jitter = 2.2)	7.828	0.000	0.008
+	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.828	0.000	0.016
+210	images/sec: 193.2 +/- 0.3 (jitter = 2.2)	7.863	0.000	0.000
+220	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.800	220	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.848	0.000	0.000
+220	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.807	0.000	0.000
+0.000	0.000
+220	images/sec: 193.2 +/- 0.3 (jitter = 2.0)	7.819	0.000	0.000
+220	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.824	0.000	0.000
+220	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.842	0.000	0.000
+220220	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.822	0.000	0.000
+	images/sec: 193.2 +/- 0.3 (jitter = 2.1)	7.837	0.000	0.008
+230230	images/sec: 193.3 +/- 0.3 (jitter = 2.0)	7.693	0.016	0.023
+	images/sec: 193.3 +/- 0.3 (jitter = 2.1)	7.720	0.008	0.016
+230230	images/sec: 193.3 +/- 0.3 (jitter = 2.1)	7.705	0.016	0.023
+230	images/sec: 193.3 +/- 0.3 (jitter = 2.1)	7.726	0.008	0.023
+230	images/sec: 193.3 +/- 0.3 (jitter = 2.1)	7.745	230	images/sec: 193.3 +/- 0.3 (jitter = 2.0)	7.740	0.016	0.016
+230	images/sec: 193.3 +/- 0.3 (jitter = 2.1)	7.681	0.016	0.023
+	images/sec: 193.3 +/- 0.3 (jitter = 2.0)	7.699	0.008	0.031
+0.016	0.016
+240	images/sec: 193.3 +/- 0.3 (jitter = 2.0)	7.771	0.000	0.008
+240	images/sec: 193.3 +/- 0.3 (jitter = 2.1)	7.782	0.000	0.000
+240	images/sec: 193.3 +/- 0.3 (jitter = 2.0)	7.795	0.000240	images/sec: 193.3 +/- 0.3 (jitter = 2.1)	7.784	0.000	0.000
+	0.000
+240	images/sec: 193.3 +/- 0.3 (jitter = 2.0)	7.810	0.000	0.008
+240240	images/sec: 193.3 +/- 0.3 (jitter = 2.1)	7.739	0.000	0.008
+	240images/sec: 193.3 +/- 0.3 (jitter = 2.1)	images/sec: 193.3 +/- 0.3 (jitter = 2.1)	7.732	0.000	0.008
+	7.762	0.000	0.008
+250	250images/sec: 193.4 +/- 0.3 (jitter = 2.0)250		images/sec: 193.4 +/- 0.3 (jitter = 1.9)	7.798	0.000	0.008
+7.754	0.000	0.016
+	250	images/sec: 193.4 +/- 0.3 (jitter = 2.0)	7.775	0.000	0.031
+images/sec: 193.4 +/- 0.3 (jitter = 1.9)250	images/sec: 193.3 +/- 0.3 (jitter = 2.0)	7.724	0.000	0.039
+250	images/sec: 193.4 +/- 0.3 (jitter = 2.1)	7.773	0.000	0.008
+250	images/sec: 193.4 +/- 0.3 (jitter = 2.0)	7.757	0.000	0.008
+	250	images/sec: 193.3 +/- 0.3 (jitter = 2.0)	7.778	0.000	0.016
+7.759	0.000	0.008
+260260	images/sec: 193.4 +/- 0.3 (jitter = 1.9)	7.815	0.000	0.023
+260	images/sec: 193.4 +/- 0.3 (jitter = 2.0)	7.688	0.000	0.023
+260	260260	images/sec: 193.4 +/- 0.3 (jitter = 1.9)	7.722	0.000	0.031
+260	images/sec: 193.4 +/- 0.3 (jitter = 1.9)	7.681	0.000	0.031
+images/sec: 193.4 +/- 0.3 (jitter = 1.9)		images/sec: 193.4 +/- 0.3 (jitter = 1.9)		images/sec: 193.4 +/- 0.3 (jitter = 1.9)7.703	0.000	0.016
+260	images/sec: 193.4 +/- 0.3 (jitter = 1.9)	7.753	0.000	0.023
+	7.733	0.000	0.023
+7.684	0.000	0.016
+270	images/sec: 193.5 +/- 0.3 (jitter = 1.9)	7.751	0.008	0.016
+270270	images/sec: 193.5 +/- 0.3 (jitter = 1.9)	7.743	0.016	0.016
+	images/sec: 193.5 +/- 0.3 (jitter = 1.8)270	7.750270	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.745	0.008	0.016
+	270	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.763	0.008	0.016
+	0.000	images/sec: 193.5 +/- 0.3 (jitter = 1.9)0.008
+270	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.743	0.000	0.016
+	270	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.749	0.000	0.008
+7.737	0.000	0.016
+280	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.790280	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.790	0.000	0.008
+	0.000	0.000
+280	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.809	0.000	0.000
+280280280	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.787	0.000	0.000
+	images/sec: 193.5 +/- 0.3 (jitter = 1.9)280	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.757	0.000	0.008
+	7.772	0.000	0.008
+	images/sec: 193.5 +/- 0.3 (jitter = 1.9)	280	images/sec: 193.5 +/- 0.3 (jitter = 1.8)	7.826	0.000	0.008
+7.885	0.000	0.000
+290	images/sec: 193.6 +/- 0.3 (jitter = 1.8)	7.762	0.000	0.000
+290	images/sec: 193.6 +/- 0.3 (jitter = 1.9)	7.746	0.000	0.008
+290	images/sec: 193.6 +/- 0.3 (jitter = 1.8)	7.742	0.000	0.000
+290	images/sec: 193.6 +/- 0.3 (jitter = 1.7)	7.709	0.000	0.008
+290	images/sec: 193.6 +/- 0.3 (jitter = 1.7)	7.727	0.000	0.008
+290	290images/sec: 193.6 +/- 0.3 (jitter = 1.7)	7.780	290	images/sec: 193.6 +/- 0.2 (jitter = 1.8)	7.742	0.000	0.000
+0.000		0.000
+images/sec: 193.6 +/- 0.2 (jitter = 1.8)	7.737	0.000	0.000
+I 22:08:27.694 2646  2814 DDL:3151] [MPI:0   ] BLC performance statistics sw_pipe_buf_size=25559104
+I 22:08:27.694  2647 2818 DDL:2745] [MPI:4   ] max_jitter=8.868e-03 min_jitter=2.684e-04 : 0.000e+00
+I 22:08:27.784 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:08:27.784 2646  2814 DDL:427 ] [MPI:0   ] tid   dim   algo         |   time        wait              call              op                send(MB)    recv(MB)    bw(GB/s)  
+I 22:08:27.784 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:08:27.785 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b0           |   6.570e+01   1.615e-03         2.889e-05         0.000e+00         2.556e+01   2.556e+01   3.110e+01  
+I 22:08:27.785 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:08:27.785 2646  2814 DDL:487 ] [MPI:0   ] 0     d1    r[2   -5   ) |   6.570e+01   2.241e-02 (0.07)  1.002e-04 (0.24)  1.424e-04 (0.02)  9.585e+00   9.585e+00   8.518e-01   
+I 22:08:27.785 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b5           |   6.572e+01   2.162e-06         1.263e-05         0.000e+00         2.556e+01   2.556e+01   3.456e+03  
+I 22:08:27.785 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:08:27.785 2646  2814 DDL:487 ] [MPI:0   ] 0     d1    r[7   -13  ) |   6.572e+01   4.354e-02 (0.05)  1.900e-04 (0.14)  1.298e-04 (1.00)  1.917e+01   1.917e+01   8.766e-01   
+I 22:08:27.785 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:08:27.785 2646  2814 DDL:487 ] [MPI:0   ] 0     d1    r[14  -17  ) |   6.577e+01   2.003e-02 (0.15)  8.336e-05 (0.07)  3.000e-16 (1.00)  9.585e+00   9.585e+00   9.531e-01   
+I 22:08:27.785 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b17          |   6.579e+01   7.437e-06         2.044e-05         0.000e+00         2.556e+01   2.556e+01   1.834e+03  
+I 22:08:27.785 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:08:27.785 2646  2814 DDL:510 ] [MPI:0   ] 0     d0    b19          |   6.579e+01   1.420e-03         1.980e-05         0.000e+00         2.556e+01   2.556e+01   3.551e+01  
+I 22:08:27.785 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:08:27.785 2646  2814 DDL:533 ] [MPI:0   ] bn:2x4                   |      *sum =   8.902e-02         4.553e-04         2.722e-04         *e2e = 8.978e-02
+I 22:08:27.785 2646  2814 DDL:363 ] [MPI:0   ] -----------------------------------------------------------------------------------------------------------------------------------
+I 22:08:27.786 2646  2814 DDL:3181] [MPI:0   ] e2e_min=8.898e-02 e2e_max=9.006e-02
+300	images/sec: 193.6 +/- 0.3 (jitter = 1.8)	7.727	0.000	0.008
+300	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.705	0.000	0.000
+300	images/sec: 193.6 +/- 0.2 (jitter = 1.8)	7.695	0.000	0.008
+300	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.673	0.000	0.008
+300	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.736	0.000	0.008
+300	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.695	0.000	0.000
+300	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.676	0.000	0.000
+300	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.724	0.000	0.008
+310	images/sec: 193.6 +/- 0.2 (jitter = 1.6)	7.754310	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.757	0.000	0.008
+	0.000	0.016
+310310	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.746	0.008	0.023
+	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.765	0.008	0.016
+310	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.863	0.000	0.008
+310	310	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.767	0.008	0.016
+images/sec: 193.6 +/- 0.2 (jitter = 1.7)310	images/sec: 193.6 +/- 0.2 (jitter = 1.7)	7.787	0.000	0.008
+	7.764	0.000	0.008
+

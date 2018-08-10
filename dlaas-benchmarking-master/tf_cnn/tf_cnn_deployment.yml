@@ -1,0 +1,58 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tfcnnbenchmark-deployment
+  labels:
+    app: tfcnnbenchmark
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tfcnnbenchmark
+  template:
+    metadata:
+      annotations:  
+        scheduler.alpha.kubernetes.io/tolerations: '[ { "key": "dedicated", "operator": "Equal", "value": "gpu-task" } ]'
+        scheduler.alpha.kubernetes.io/nvidiaGPU: '{ "AllocationPriority": "Dense" }'
+      labels:
+        app: tfcnnbenchmark
+    spec:
+      volumes:
+      - name: s3fs-test-volume
+        flexVolume:
+          driver: "ibm/ibmc-s3fs"
+          secretRef:
+            name: cos-secret
+          options:
+            bucket: "imagenet1k-tf"
+            endpoint: "https://s3-api.dal-us-geo.objectstorage.service.networklayer.com"
+            region: "us-standard"
+            cache-size-gb: "25"
+            chunk-size-mb: "200"
+            parallel-count: "30"
+      tolerations: 
+      - key: "dedicated"
+        operator: "Equal"
+        value: "gpu-task"
+      containers:
+      - name: tfcnnbenchmark
+        #image: tensorflow/tensorflow:nightly-gpu-py3
+        image: registry.ng.bluemix.net/dlaas_dev/dlaas_benchmarks_tfcnn:v1
+        resources:
+          limits:
+            alpha.kubernetes.io/nvidia-gpu: "1"
+            cpu: "8"
+            memory: "32G"
+          requests:
+            alpha.kubernetes.io/nvidia-gpu: "1"
+            cpu: "8"
+            memory: "32G"
+        workingDir: "/root/data/benchmarks/"
+        args: [/bin/sh, -c, "rm -rf training-log.txt ; python scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 64 --num_batches=2000 --num_gpus 2 --data_dir /mnt/s3fs/imagenet_tf/IMAGENET-FULL/ --data_name imagenet  2>&1 | tee training-log.txt"]
+        #when using synthetic data
+        #args: [/bin/sh, -c, "rm -rf training-log.txt ; python scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 64 --num_batches=2000 --num_gpus 2 --data_name imagenet  2>&1 | tee training-log.txt"]
+        volumeMounts:
+        - name: s3fs-test-volume
+          mountPath: "/mnt/s3fs"
+      imagePullSecrets:
+      - name: bluemix-cr-ng

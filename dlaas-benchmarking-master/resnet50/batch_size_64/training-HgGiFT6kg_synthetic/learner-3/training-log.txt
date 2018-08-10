@@ -1,0 +1,21 @@
+executing installPrerequisites sh
+ * Starting OpenBSD Secure Shell server sshd
+   ...done.
+Training with training/test data at:
+  DATA_DIR: /mnt/data/dlaas-ci-asood-horovod-benchmarks
+  MODEL_DIR: /job/model-code
+  RESULT_DIR: /mnt/results/dlaas-ci-trained-results-asood-horovod-benchmarks/training-HgGiFT6kg
+  LOG_DIR: /job/logs
+  TRAINING_COMMAND: python benchmarks/scripts/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 64 --variable_update horovod --num_batches=10000 --print_training_accuracy
+  GPUs per Learner: 2.000000
+  LEARNER_ID: 3
+  LEARNER_NAME_PREFIX:: learner-42dcb23b-bcee-446f-699b-cf71e10e1a02
+Num learners: 4
+creating results directory /mnt/results/dlaas-ci-trained-results-asood-horovod-benchmarks/training-HgGiFT6kg/learner-3
+Making sure ssh is running
+ * sshd is running
+ * Starting OpenBSD Secure Shell server sshd
+   ...done.
+ * sshd is running
+Tue Feb 27 21:35:56 UTC 2018: Running Tensorflow with horovod
+LEARNER ID 3 so not doing anything....
